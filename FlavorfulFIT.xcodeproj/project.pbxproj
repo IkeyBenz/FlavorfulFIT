@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1149F038203A56EE0013B37F /* BarOrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F037203A56EE0013B37F /* BarOrderScreen.swift */; };
+		1149F03A203A65830013B37F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F039203A65830013B37F /* Singleton.swift */; };
 		C654FCEF20362EB1009E9DCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FCEE20362EB1009E9DCA /* AppDelegate.swift */; };
 		C654FCF120362EB1009E9DCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FCF020362EB1009E9DCA /* ViewController.swift */; };
 		C654FCF420362EB1009E9DCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C654FCF220362EB1009E9DCA /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1149F037203A56EE0013B37F /* BarOrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarOrderScreen.swift; sourceTree = "<group>"; };
+		1149F039203A65830013B37F /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		C654FCEB20362EB1009E9DCA /* FlavorfulFIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlavorfulFIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C654FCEE20362EB1009E9DCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C654FCF020362EB1009E9DCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				C654FCEE20362EB1009E9DCA /* AppDelegate.swift */,
 				C654FCF020362EB1009E9DCA /* ViewController.swift */,
 				C654FCF220362EB1009E9DCA /* Main.storyboard */,
+				1149F039203A65830013B37F /* Singleton.swift */,
+				1149F037203A56EE0013B37F /* BarOrderScreen.swift */,
 				C654FD0220363923009E9DCA /* CrumbsScreen.swift */,
 				C654FD0420363942009E9DCA /* ProgramsScreen.swift */,
 				C654FD002036388B009E9DCA /* BarsScreen.swift */,
@@ -146,9 +152,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C654FCF120362EB1009E9DCA /* ViewController.swift in Sources */,
+				1149F03A203A65830013B37F /* Singleton.swift in Sources */,
 				C654FD0320363923009E9DCA /* CrumbsScreen.swift in Sources */,
 				C654FCEF20362EB1009E9DCA /* AppDelegate.swift in Sources */,
 				C654FD0520363942009E9DCA /* ProgramsScreen.swift in Sources */,
+				1149F038203A56EE0013B37F /* BarOrderScreen.swift in Sources */,
 				C654FD012036388B009E9DCA /* BarsScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
