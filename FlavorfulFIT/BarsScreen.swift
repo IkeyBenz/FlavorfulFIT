@@ -27,6 +27,8 @@ class BarsScreen: UIViewController {
             button?.titleLabel?.font = UIFont(name: "System Font Regular", size: 32.0)
             button?.titleLabel?.numberOfLines = 3
             button?.titleLabel?.textAlignment = .center
+            //button?.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+            button?.contentMode = UIViewContentMode.scaleAspectFill
         }
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(back))
         swipeGesture.direction = .right

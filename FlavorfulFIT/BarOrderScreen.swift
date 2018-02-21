@@ -14,11 +14,13 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
+    @IBOutlet weak var barImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(moveScreenUp), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(moveScreenDown), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        barImg.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFill.rawValue)
         let tag = Singleton.sharedInstance.requestedBarTag!
         var title = ""
         switch tag {
@@ -27,18 +29,22 @@ class BarOrderScreen: UIViewController {
             break
             case 2:
                 title = "Berries & Cream"
+                barImg.image = UIImage(contentsOfFile: "BerriesnCream")
             break
             case 3:
                 title = "Chocolate Peanut Butter"
+                barImg.image = UIImage(contentsOfFile: "ChocoPeanut")
             break
             case 4:
                 title = "Chocolate Brownie"
             break
             case 5:
                 title = "Assorted Chocolate"
+                barImg.image = UIImage(contentsOfFile: "AssortedChoco")
             break
             case 6:
                 title = "Assorted Vanilla";
+                barImg.image = UIImage(contentsOfFile: "AssortedVanilla")
             break
             default: title = ""
         }
