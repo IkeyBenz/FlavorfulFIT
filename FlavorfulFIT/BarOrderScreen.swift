@@ -15,6 +15,7 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var barImg: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class BarOrderScreen: UIViewController {
         switch tag {
             case 1:
                 title = "Coconut Marzipan"
+                descriptionLabel.text = "Decadent bar with coconut and almond flavor profile. Chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams of sugar. Grain free. Take one with water, keep frozen.\n*Contains tree nuts. Processed on equipment that handles peanuts. Certified Kosher Parve. Pack of 7."
             break
             case 2:
                 title = "Berries & Cream"
