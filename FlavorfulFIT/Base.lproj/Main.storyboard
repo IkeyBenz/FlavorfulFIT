@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1O-TU-7YV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="882"/>
+            <point key="canvasLocation" x="718" y="876"/>
         </scene>
         <!--Bars Screen-->
         <scene sceneID="4Gd-de-svd">
@@ -308,6 +308,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVy-V1-Vq7">
                                 <rect key="frame" x="0.0" y="733" width="40" height="30"/>
                                 <state key="normal" title="Order"/>
+                                <connections>
+                                    <action selector="orderButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="hte-4T-ley"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pu6-ct-nkQ">
                                 <rect key="frame" x="30" y="613" width="315" height="100"/>
@@ -462,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpX-JQ-dwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="132"/>
+            <point key="canvasLocation" x="1596" y="132"/>
         </scene>
     </scenes>
     <resources>
@@ -475,7 +478,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7C-nv-6jI"/>
-        <segue reference="EWS-HB-pjW"/>
-        <segue reference="bWw-HH-oKi"/>
+        <segue reference="fBb-Sn-MKN"/>
+        <segue reference="Qzx-VT-11l"/>
     </inferredMetricsTieBreakers>
 </document>
