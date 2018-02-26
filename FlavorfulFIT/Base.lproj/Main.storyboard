@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -37,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="113.66666666666669" width="375" height="664.33333333333326"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOw-zg-XMP">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220.33333333333334"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" backgroundImage="BarsImage">
                                             <attributedString key="attributedTitle">
@@ -54,14 +59,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRD-i2-2xV">
-                                        <rect key="frame" x="0.0" y="222" width="375" height="220.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="222.33333333333331" width="375" height="220"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="62"/>
                                         <state key="normal" title="Crumbs" backgroundImage="CrumbsImage">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="fhd-70-89d" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="J7j-SR-aQH"/>
+                                            <action selector="crumbsScreenClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VkH-qH-cHE"/>
+                                            <segue destination="hY0-ae-xXC" kind="custom" identifier="orderScreenToHome" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="WjJ-51-fiE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-MX-hCD">
@@ -95,55 +101,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-79.710144927536234" y="132.06521739130434"/>
-        </scene>
-        <!--Crumbs Screen-->
-        <scene sceneID="4DW-yK-Fn0">
-            <objects>
-                <viewController id="fhd-70-89d" customClass="CrumbsScreen" customModule="FlavorfulFIT" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="L9i-6H-IwN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGI-oN-PAl">
-                                <rect key="frame" x="103" y="44" width="169" height="38.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Crumbs -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nP-pf-Yy1">
-                                <rect key="frame" x="142.66666666666666" y="82.666666666666671" width="90" height="21.333333333333329"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="6Zn-fw-Kda"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49P-9n-Iua">
-                                <rect key="frame" x="41" y="28" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="hAu-zo-XEf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="GGI-oN-PAl" firstAttribute="centerX" secondItem="L9i-6H-IwN" secondAttribute="centerX" id="PYp-48-41t"/>
-                            <constraint firstItem="4nP-pf-Yy1" firstAttribute="centerX" secondItem="L9i-6H-IwN" secondAttribute="centerX" id="aZU-jF-TT7"/>
-                            <constraint firstItem="4nP-pf-Yy1" firstAttribute="top" secondItem="GGI-oN-PAl" secondAttribute="bottom" id="p8i-zX-cxE"/>
-                            <constraint firstItem="GGI-oN-PAl" firstAttribute="top" secondItem="7ba-Kb-4ST" secondAttribute="top" id="zGa-V9-t81"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="7ba-Kb-4ST"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SkF-zS-dVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="981" y="132"/>
         </scene>
         <!--Programs Screen-->
         <scene sceneID="9ih-Z3-uK9">
@@ -181,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1O-TU-7YV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-81" y="858"/>
+            <point key="canvasLocation" x="718" y="882"/>
         </scene>
         <!--Bars Screen-->
         <scene sceneID="4Gd-de-svd">
@@ -442,7 +399,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9dm-6c-HSO" kind="custom" identifier="barOrderToBarSelect" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="Djr-k4-shw"/>
+                                    <action selector="backButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="dfl-I7-eJc"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7K8-vv-gvi">
@@ -454,7 +411,7 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChocoPeanut" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-xA-kK2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChocoPeanut" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-xA-kK2">
                                         <rect key="frame" x="-15.666666666666671" y="0.0" width="171.66666666666669" height="200"/>
                                     </imageView>
                                 </subviews>
@@ -469,7 +426,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="3kv-vj-9zv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -499,11 +456,13 @@
                         <outlet property="emailTF" destination="uvb-Ka-jzU" id="RRm-a8-Mvi"/>
                         <outlet property="nameTF" destination="5uD-TC-8hy" id="wgi-bU-lQl"/>
                         <outlet property="phoneTF" destination="skb-8h-2JF" id="5D1-gh-I4j"/>
+                        <segue destination="9dm-6c-HSO" kind="custom" identifier="barOrderToBarSelect" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="fBb-Sn-MKN"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="orderScreenToHome" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="Qzx-VT-11l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpX-JQ-dwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671.2" y="-815.02463054187194"/>
+            <point key="canvasLocation" x="1759" y="132"/>
         </scene>
     </scenes>
     <resources>
@@ -515,6 +474,7 @@
         <image name="CrumbsImage" width="700" height="463"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="e7C-nv-6jI"/>
         <segue reference="EWS-HB-pjW"/>
         <segue reference="bWw-HH-oKi"/>
     </inferredMetricsTieBreakers>

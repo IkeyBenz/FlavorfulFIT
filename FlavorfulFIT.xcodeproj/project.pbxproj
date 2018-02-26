@@ -16,7 +16,6 @@
 		C654FCF620362EB1009E9DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C654FCF520362EB1009E9DCA /* Assets.xcassets */; };
 		C654FCF920362EB1009E9DCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C654FCF720362EB1009E9DCA /* LaunchScreen.storyboard */; };
 		C654FD012036388B009E9DCA /* BarsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FD002036388B009E9DCA /* BarsScreen.swift */; };
-		C654FD0320363923009E9DCA /* CrumbsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FD0220363923009E9DCA /* CrumbsScreen.swift */; };
 		C654FD0520363942009E9DCA /* ProgramsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FD0420363942009E9DCA /* ProgramsScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		C654FCF820362EB1009E9DCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C654FCFA20362EB1009E9DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C654FD002036388B009E9DCA /* BarsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsScreen.swift; sourceTree = "<group>"; };
-		C654FD0220363923009E9DCA /* CrumbsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrumbsScreen.swift; sourceTree = "<group>"; };
 		C654FD0420363942009E9DCA /* ProgramsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,7 +69,6 @@
 				C654FCF220362EB1009E9DCA /* Main.storyboard */,
 				1149F039203A65830013B37F /* Singleton.swift */,
 				1149F037203A56EE0013B37F /* BarOrderScreen.swift */,
-				C654FD0220363923009E9DCA /* CrumbsScreen.swift */,
 				C654FD0420363942009E9DCA /* ProgramsScreen.swift */,
 				C654FD002036388B009E9DCA /* BarsScreen.swift */,
 				C654FCF520362EB1009E9DCA /* Assets.xcassets */,
@@ -156,7 +153,6 @@
 			files = (
 				C654FCF120362EB1009E9DCA /* ViewController.swift in Sources */,
 				1149F03A203A65830013B37F /* Singleton.swift in Sources */,
-				C654FD0320363923009E9DCA /* CrumbsScreen.swift in Sources */,
 				C6088272203E16C800AE3100 /* Segues.swift in Sources */,
 				C654FCEF20362EB1009E9DCA /* AppDelegate.swift in Sources */,
 				C654FD0520363942009E9DCA /* ProgramsScreen.swift in Sources */,
