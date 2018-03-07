@@ -13,6 +13,12 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
+        <array key="Noteworthy.ttc">
+            <string>Noteworthy-Bold</string>
+        </array>
+        <array key="TrebuchetMS.ttf">
+            <string>TrebuchetMS</string>
+        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -76,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRD-i2-2xV">
-                                        <rect key="frame" x="0.0" y="238.33333333333331" width="375" height="235.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="238.33333333333331" width="375" height="236"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="62"/>
                                         <state key="normal" title="Crumbs" backgroundImage="CrumbsImage">
@@ -88,7 +94,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-MX-hCD">
-                                        <rect key="frame" x="0.0" y="476" width="375" height="236"/>
+                                        <rect key="frame" x="0.0" y="476.33333333333343" width="375" height="235.66666666666669"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <segue destination="85d-S9-VGT" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="mUS-Aa-JV4"/>
@@ -168,16 +174,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8A-8u-sen">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="36.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG5-uU-nFP">
-                                        <rect key="frame" x="0.0" y="36.666666666666657" width="375" height="38.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="32" width="375" height="43"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="37"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -187,7 +193,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="0IJ-xC-wQT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -213,11 +219,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="McU-fg-BF1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="224.66666666666666"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-bE-Y15">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-bE-Y15">
                                                 <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.66666666666666"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="17"/>
-                                                <state key="normal" title="Coconut Marzipan">
+                                                <state key="normal" title="Coconut Marzipan" image="CcntMarzpn">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -227,6 +232,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it8-on-Yzi">
                                                 <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.66666666666666"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                 <state key="normal" title="Berries &amp; Cream" backgroundImage="BerriesnCream">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -240,11 +246,12 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-26-wy3">
-                                        <rect key="frame" x="0.0" y="226.66666666666669" width="375" height="224.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="226.66666666666669" width="375" height="225"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-k0-QcT">
-                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="225"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                 <state key="normal" title="Chocolate Peanut Butter" backgroundImage="ChocoPeanut">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -252,10 +259,10 @@
                                                     <action selector="goToBarOrderScreen:" destination="9dm-6c-HSO" eventType="touchUpInside" id="W0L-0D-xV7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-kF-QTM">
-                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.66666666666666"/>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-kF-QTM">
+                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="225"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Chocolate Brownie">
+                                                <state key="normal" title="Chocolate Brownie" image="ChocoBrownie">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -268,11 +275,12 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uey-jW-2Ow">
-                                        <rect key="frame" x="0.0" y="453.33333333333343" width="375" height="224.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="453.66666666666657" width="375" height="224.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtb-rk-T3t">
-                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.33333333333334"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                 <state key="normal" title="Assorted Chocolate" backgroundImage="AssortedChoco">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -281,8 +289,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhX-1d-yCj">
-                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.66666666666666"/>
+                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.33333333333334"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                 <state key="normal" title="Assorted Vanilla" backgroundImage="AssortedVanilla">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -464,16 +473,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7K8-vv-gvi">
-                                <rect key="frame" x="15.666666666666657" y="94" width="343" height="200"/>
+                                <rect key="frame" x="15.666666666666657" y="94" width="343.33333333333337" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coconut Marzipan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRz-c5-Aeu">
-                                        <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="200"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChocoPeanut" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-xA-kK2">
-                                        <rect key="frame" x="-15.666666666666671" y="0.0" width="171.33333333333337" height="200"/>
+                                        <rect key="frame" x="-15.666666666666671" y="0.0" width="171.66666666666669" height="200"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -526,20 +535,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpX-JQ-dwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1596" y="132"/>
+            <point key="canvasLocation" x="1585" y="143"/>
         </scene>
     </scenes>
     <resources>
         <image name="AssortedChoco" width="5184" height="3456"/>
         <image name="AssortedVanilla" width="5082" height="3388"/>
         <image name="BarsImage" width="1800" height="942"/>
-        <image name="BerriesnCream" width="5184" height="3456"/>
-        <image name="ChocoPeanut" width="5184" height="3456"/>
+        <image name="BerriesnCream" width="3599" height="3456"/>
+        <image name="CcntMarzpn" width="3981" height="3388"/>
+        <image name="ChocoBrownie" width="3336" height="3444"/>
+        <image name="ChocoPeanut" width="3623" height="3456"/>
         <image name="CrumbsImage" width="700" height="463"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7C-nv-6jI"/>
         <segue reference="fBb-Sn-MKN"/>
-        <segue reference="Qzx-VT-11l"/>
+        <segue reference="bWw-HH-oKi"/>
     </inferredMetricsTieBreakers>
 </document>

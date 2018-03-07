@@ -24,7 +24,6 @@ class BarsScreen: UIViewController {
         for button in buttons {
             tagNumber += 1
             button?.tag = tagNumber
-            button?.titleLabel?.font = UIFont(name: "System Font Regular", size: 32.0)
             button?.titleLabel?.numberOfLines = 3
             button?.titleLabel?.textAlignment = .center
             button?.imageView?.contentMode = UIViewContentMode.scaleAspectFill
