@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import BraintreeDropIn
+import Alamofire
 
 class BarOrderScreen: UIViewController {
     
