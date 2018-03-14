@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="Noteworthy.ttc">
             <string>Noteworthy-Bold</string>
         </array>
         <array key="TrebuchetMS.ttf">
             <string>TrebuchetMS</string>
+        </array>
+        <array key="TrebuchetMSBold.ttf">
+            <string>TrebuchetMS-Bold</string>
         </array>
     </customFonts>
     <scenes>
@@ -33,16 +34,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-xf-o2Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="36.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5b-PR-8qR">
-                                        <rect key="frame" x="0.0" y="36.666666666666657" width="375" height="38.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="32" width="375" height="43"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="37"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -52,7 +53,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="uol-l1-7SN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -64,38 +65,29 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-VI-AL5" userLabel="Options">
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOw-zg-XMP">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="236.33333333333334"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOw-zg-XMP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="62"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" backgroundImage="BarsImage">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Bars">
-                                                    <attributes>
-                                                        <font key="NSFont" size="62" name=".AppleSystemUIFont"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
+                                        <state key="normal" title="Bars" backgroundImage="BarsImg"/>
                                         <connections>
                                             <segue destination="9dm-6c-HSO" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="EWS-HB-pjW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRD-i2-2xV">
-                                        <rect key="frame" x="0.0" y="238.33333333333331" width="375" height="236"/>
+                                        <rect key="frame" x="0.0" y="238" width="375" height="236"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="62"/>
-                                        <state key="normal" title="Crumbs" backgroundImage="CrumbsImage">
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="46"/>
+                                        <state key="normal" title="Mixes &amp; Crumbs" backgroundImage="CrumbsCover">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="crumbsScreenClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VkH-qH-cHE"/>
-                                            <segue destination="hY0-ae-xXC" kind="custom" identifier="orderScreenToHome" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="WjJ-51-fiE"/>
+                                            <segue destination="AtH-yV-Ut7" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="gIx-US-tLH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-MX-hCD">
-                                        <rect key="frame" x="0.0" y="476.33333333333343" width="375" height="235.66666666666669"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ucs-MX-hCD">
+                                        <rect key="frame" x="0.0" y="476" width="375" height="236"/>
+                                        <state key="normal" title="Button" image="ProgramsCover"/>
                                         <connections>
                                             <segue destination="85d-S9-VGT" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="mUS-Aa-JV4"/>
                                         </connections>
@@ -178,9 +170,38 @@
                                 </state>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="suE-yB-1jp"/>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="qYa-9k-VC7"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="programsToHome" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="qYa-9k-VC7"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="e0J-nq-cxu" userLabel="Options">
+                                <rect key="frame" x="0.0" y="100" width="375" height="502"/>
+                                <subviews>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn7-mw-FgM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="249.66666666666666"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="61"/>
+                                        <state key="normal" title="Men" backgroundImage="MensProgramImg"/>
+                                        <connections>
+                                            <action selector="goToOrderScreen:" destination="85d-S9-VGT" eventType="touchUpInside" id="Via-1k-98m"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" tag="10" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccf-gY-Xys">
+                                        <rect key="frame" x="0.0" y="252.66666666666669" width="375" height="249.33333333333331"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="61"/>
+                                        <state key="normal" title="Women" backgroundImage="WomensProgramImg">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToOrderScreen:" destination="85d-S9-VGT" eventType="touchUpInside" id="WhS-qt-Kgu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="e0J-nq-cxu" secondAttribute="height" multiplier="375:502" id="GxR-3a-IwE"/>
+                                    <constraint firstItem="Ccf-gY-Xys" firstAttribute="height" secondItem="bn7-mw-FgM" secondAttribute="height" id="SSp-2i-pU3"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -188,17 +209,20 @@
                             <constraint firstItem="hMe-I6-7jJ" firstAttribute="leading" secondItem="4UR-vL-eak" secondAttribute="leading" constant="15" id="F5h-vi-Rrg"/>
                             <constraint firstItem="hMe-I6-7jJ" firstAttribute="top" secondItem="4UR-vL-eak" secondAttribute="top" id="IM7-ag-rD9"/>
                             <constraint firstItem="4UR-vL-eak" firstAttribute="trailing" secondItem="iCS-xa-zmW" secondAttribute="trailing" id="VUQ-EE-MHp"/>
+                            <constraint firstItem="e0J-nq-cxu" firstAttribute="top" secondItem="iCS-xa-zmW" secondAttribute="bottom" id="dOO-R2-3Sl"/>
                             <constraint firstItem="iCS-xa-zmW" firstAttribute="leading" secondItem="4UR-vL-eak" secondAttribute="leading" id="f6q-OO-gfh"/>
+                            <constraint firstItem="e0J-nq-cxu" firstAttribute="leading" secondItem="4UR-vL-eak" secondAttribute="leading" id="gYQ-iy-zAl"/>
+                            <constraint firstItem="4UR-vL-eak" firstAttribute="trailing" secondItem="e0J-nq-cxu" secondAttribute="trailing" id="hfL-kX-6Ct"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4UR-vL-eak"/>
                     </view>
                     <connections>
-                        <segue destination="hY0-ae-xXC" kind="custom" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="nVp-v4-UkA"/>
+                        <segue destination="hY0-ae-xXC" kind="custom" identifier="programsToOrderScreen" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="nVp-v4-UkA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1O-TU-7YV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="876"/>
+            <point key="canvasLocation" x="778" y="878"/>
         </scene>
         <!--Bars Screen-->
         <scene sceneID="4Gd-de-svd">
@@ -252,25 +276,26 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-nf-WKK" userLabel="Options">
-                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="543.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="McU-fg-BF1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="224.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-bE-Y15">
-                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.66666666666666"/>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-bE-Y15">
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="180"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Coconut Marzipan" image="CcntMarzpn">
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                                <state key="normal" title="Coconut Marzipan" backgroundImage="CoconutMarzipan">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="goToBarOrderScreen:" destination="9dm-6c-HSO" eventType="touchUpInside" id="Qwa-EH-59b"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it8-on-Yzi">
-                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.66666666666666"/>
+                                            <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it8-on-Yzi">
+                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="180"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                 <state key="normal" title="Berries &amp; Cream" backgroundImage="BerriesnCream">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -284,12 +309,12 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-26-wy3">
-                                        <rect key="frame" x="0.0" y="226.66666666666669" width="375" height="225"/>
+                                        <rect key="frame" x="0.0" y="182" width="375" height="180"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-k0-QcT">
-                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="225"/>
+                                            <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-k0-QcT">
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="180"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                 <state key="normal" title="Chocolate Peanut Butter" backgroundImage="ChocoPeanut">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -297,10 +322,11 @@
                                                     <action selector="goToBarOrderScreen:" destination="9dm-6c-HSO" eventType="touchUpInside" id="W0L-0D-xV7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-kF-QTM">
-                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="225"/>
+                                            <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-kF-QTM">
+                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="180"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Chocolate Brownie" image="ChocoBrownie">
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                                <state key="normal" title="Chocolate Brownie" backgroundImage="ChocoBrownie">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -313,23 +339,23 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uey-jW-2Ow">
-                                        <rect key="frame" x="0.0" y="453.66666666666657" width="375" height="224.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="364" width="375" height="179.66666666666663"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtb-rk-T3t">
-                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="224.33333333333334"/>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtb-rk-T3t">
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="179.66666666666666"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                                <state key="normal" title="Assorted Chocolate" backgroundImage="AssortedChoco">
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                                <state key="normal" title="Assorted Chocolate" backgroundImage="AssortedChocolate">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="goToBarOrderScreen:" destination="9dm-6c-HSO" eventType="touchUpInside" id="UsQ-eX-HpV"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhX-1d-yCj">
-                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="224.33333333333334"/>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhX-1d-yCj">
+                                                <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="179.66666666666666"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                                 <state key="normal" title="Assorted Vanilla" backgroundImage="AssortedVanilla">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -344,6 +370,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="gSY-nf-WKK" secondAttribute="height" multiplier="1:1.45" id="6b5-Tz-UyB"/>
                                     <constraint firstItem="hvj-26-wy3" firstAttribute="height" secondItem="McU-fg-BF1" secondAttribute="height" id="V7G-em-5Tf"/>
                                     <constraint firstItem="uey-jW-2Ow" firstAttribute="height" secondItem="McU-fg-BF1" secondAttribute="height" id="xqG-63-FMs"/>
                                 </constraints>
@@ -357,7 +384,6 @@
                             <constraint firstItem="8uf-XQ-htD" firstAttribute="top" secondItem="5xR-wE-09q" secondAttribute="top" id="NB8-pV-GWG"/>
                             <constraint firstItem="5xR-wE-09q" firstAttribute="trailing" secondItem="gSY-nf-WKK" secondAttribute="trailing" id="aS3-ne-eOh"/>
                             <constraint firstItem="gSY-nf-WKK" firstAttribute="leading" secondItem="5xR-wE-09q" secondAttribute="leading" id="h9G-Hs-gOc"/>
-                            <constraint firstItem="5xR-wE-09q" firstAttribute="bottom" secondItem="gSY-nf-WKK" secondAttribute="bottom" id="m0T-dE-S6d"/>
                             <constraint firstItem="8uf-XQ-htD" firstAttribute="leading" secondItem="5xR-wE-09q" secondAttribute="leading" constant="16" id="msG-tA-pO6"/>
                             <constraint firstItem="5xR-wE-09q" firstAttribute="trailing" secondItem="7uj-je-LBM" secondAttribute="trailing" id="rZ5-u6-Qp7"/>
                         </constraints>
@@ -377,6 +403,112 @@
             </objects>
             <point key="canvasLocation" x="719" y="-747"/>
         </scene>
+        <!--Mixes And Crumbs Screen-->
+        <scene sceneID="PkX-g4-dCa">
+            <objects>
+                <viewController id="AtH-yV-Ut7" customClass="MixesAndCrumbsScreen" customModule="FlavorfulFIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gnW-5C-aSj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VrK-x5-1sH" userLabel="HUD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFv-72-Ato">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5G-WP-jFO">
+                                        <rect key="frame" x="0.0" y="32" width="375" height="43"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="37"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Mixes &amp; Crumbs -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoi-gU-fPY">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="25"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="NMb-6X-R1O"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="57E-c8-PIJ"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XeK-ds-88d">
+                                <rect key="frame" x="0.0" y="100" width="375" height="505"/>
+                                <subviews>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgK-1a-Ov4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="252.66666666666666"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="61"/>
+                                        <state key="normal" title="Mixes">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToOrderScreen:" destination="AtH-yV-Ut7" eventType="touchUpInside" id="hEJ-9Q-tZD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hV2-NV-8Wm">
+                                        <rect key="frame" x="0.0" y="252.66666666666669" width="375" height="252.33333333333331"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="61"/>
+                                        <state key="normal" title="Crumbs" backgroundImage="CrumbsImg">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToOrderScreen:" destination="AtH-yV-Ut7" eventType="touchUpInside" id="kQk-60-7eA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hV2-NV-8Wm" firstAttribute="height" secondItem="FgK-1a-Ov4" secondAttribute="height" id="Jhl-d2-41g"/>
+                                    <constraint firstAttribute="width" secondItem="XeK-ds-88d" secondAttribute="height" multiplier="75:101" id="TKa-cM-Ip7"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-nP-9Sg">
+                                <rect key="frame" x="16" y="44" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dla-O3-cZg"/>
+                                    <constraint firstAttribute="width" constant="50" id="zGi-PL-RNY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="ppu-tP-P0s"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="mixesToHome" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="jNI-Ui-1ha"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VrK-x5-1sH" firstAttribute="top" secondItem="gnW-5C-aSj" secondAttribute="top" id="4un-fx-T3W"/>
+                            <constraint firstItem="XeK-ds-88d" firstAttribute="top" secondItem="VrK-x5-1sH" secondAttribute="bottom" id="DvD-y2-fbs"/>
+                            <constraint firstItem="bfN-nP-9Sg" firstAttribute="top" secondItem="bH9-3j-TxM" secondAttribute="top" id="Nrf-Hq-0dp"/>
+                            <constraint firstItem="bH9-3j-TxM" firstAttribute="trailing" secondItem="VrK-x5-1sH" secondAttribute="trailing" id="Zp7-0B-aAP"/>
+                            <constraint firstAttribute="trailing" secondItem="XeK-ds-88d" secondAttribute="trailing" id="bb7-bw-6M7"/>
+                            <constraint firstItem="XeK-ds-88d" firstAttribute="leading" secondItem="gnW-5C-aSj" secondAttribute="leading" id="sVZ-7e-V31"/>
+                            <constraint firstItem="bfN-nP-9Sg" firstAttribute="leading" secondItem="bH9-3j-TxM" secondAttribute="leading" constant="16" id="scv-B9-KhQ"/>
+                            <constraint firstItem="VrK-x5-1sH" firstAttribute="leading" secondItem="bH9-3j-TxM" secondAttribute="leading" id="sqe-VI-KbV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bH9-3j-TxM"/>
+                    </view>
+                    <connections>
+                        <segue destination="hY0-ae-xXC" kind="custom" identifier="mixesToOrderScreen" customClass="SegueFromLeft" customModule="FlavorfulFIT" customModuleProvider="target" id="48Z-t4-IXG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXj-dG-9uH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1466" y="132"/>
+        </scene>
         <!--Bar Order Screen-->
         <scene sceneID="yxm-nK-qww">
             <objects>
@@ -389,16 +521,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIl-tY-WJ5">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="36.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGb-0T-Zva">
-                                        <rect key="frame" x="0.0" y="36.666666666666657" width="375" height="38.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="32" width="375" height="43"/>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="37"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -408,7 +540,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="baE-tF-oWG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -433,13 +565,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="28.666666666666668"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebv-JA-jQv">
-                                                <rect key="frame" x="0.0" y="0.0" width="58.666666666666664" height="28.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5uD-TC-8hy">
-                                                <rect key="frame" x="58.666666666666657" y="0.0" width="256.33333333333337" height="28.666666666666668"/>
+                                                <rect key="frame" x="59.666666666666671" y="0.0" width="255.33333333333331" height="28.666666666666668"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -453,13 +585,13 @@
                                         <rect key="frame" x="0.0" y="35.666666666666629" width="315" height="29"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EC-Qm-t1i">
-                                                <rect key="frame" x="0.0" y="0.0" width="59" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="63.666666666666664" height="29"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-Ka-jzU">
-                                                <rect key="frame" x="59" y="0.0" width="256" height="29"/>
+                                                <rect key="frame" x="63.666666666666671" y="0.0" width="251.33333333333331" height="29"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -473,13 +605,13 @@
                                         <rect key="frame" x="0.0" y="71.666666666666629" width="315" height="28.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBb-sg-YS7">
-                                                <rect key="frame" x="0.0" y="0.0" width="58" height="28.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="28.333333333333332"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skb-8h-2JF">
-                                                <rect key="frame" x="58" y="0.0" width="257" height="28.333333333333332"/>
+                                                <rect key="frame" x="57.333333333333343" y="0.0" width="257.66666666666663" height="28.333333333333332"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -520,7 +652,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChocoPeanut" translatesAutoresizingMaskIntoConstraints="NO" id="KD6-xA-kK2">
-                                        <rect key="frame" x="-15.666666666666686" y="0.0" width="171.66666666666669" height="200"/>
+                                        <rect key="frame" x="-15.666666666666671" y="0.0" width="171.33333333333337" height="200"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -534,7 +666,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="3kv-vj-9zv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -561,34 +693,41 @@
                         <viewLayoutGuide key="safeArea" id="1Np-yB-iJw"/>
                     </view>
                     <connections>
-                        <outlet property="barImg" destination="KD6-xA-kK2" id="NR1-WN-2qz"/>
-                        <outlet property="barTitle" destination="cRz-c5-Aeu" id="11T-zh-TEf"/>
                         <outlet property="descriptionLabel" destination="A14-hF-iqN" id="Fbr-BP-6vb"/>
                         <outlet property="emailTF" destination="uvb-Ka-jzU" id="RRm-a8-Mvi"/>
                         <outlet property="nameTF" destination="5uD-TC-8hy" id="wgi-bU-lQl"/>
                         <outlet property="phoneTF" destination="skb-8h-2JF" id="5D1-gh-I4j"/>
+                        <outlet property="productImageView" destination="KD6-xA-kK2" id="RCv-kw-8Sz"/>
+                        <outlet property="productTitle" destination="cRz-c5-Aeu" id="ue8-a6-mNh"/>
                         <segue destination="9dm-6c-HSO" kind="custom" identifier="barOrderToBarSelect" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="fBb-Sn-MKN"/>
-                        <segue destination="BYZ-38-t0r" kind="custom" identifier="orderScreenToHome" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="Qzx-VT-11l"/>
+                        <segue destination="AtH-yV-Ut7" kind="custom" identifier="orderScreenToMixes" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="Xfx-AF-G0X"/>
+                        <segue destination="85d-S9-VGT" kind="custom" identifier="orderScreenToPrograms" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="C5i-AT-JnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpX-JQ-dwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1585" y="143"/>
+            <point key="canvasLocation" x="3102" y="132"/>
         </scene>
     </scenes>
     <resources>
-        <image name="AssortedChoco" width="5184" height="3456"/>
-        <image name="AssortedVanilla" width="5082" height="3388"/>
-        <image name="BarsImage" width="1800" height="942"/>
+        <image name="AssortedChocolate" width="5184" height="3456"/>
+        <image name="AssortedVanilla" width="5184" height="3456"/>
+        <image name="BarsImg" width="4841" height="3227"/>
         <image name="BerriesnCream" width="3599" height="3456"/>
-        <image name="CcntMarzpn" width="3981" height="3388"/>
         <image name="ChocoBrownie" width="3336" height="3444"/>
         <image name="ChocoPeanut" width="3623" height="3456"/>
-        <image name="CrumbsImage" width="700" height="463"/>
+        <image name="CoconutMarzipan" width="3981" height="3388"/>
+        <image name="CrumbsCover" width="4896" height="3264"/>
+        <image name="CrumbsImg" width="5184" height="3456"/>
+        <image name="MensProgramImg" width="720" height="480"/>
+        <image name="ProgramsCover" width="2560" height="1707"/>
+        <image name="WomensProgramImg" width="870" height="580"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nVp-v4-UkA"/>
+        <segue reference="48Z-t4-IXG"/>
+        <segue reference="Xfx-AF-G0X"/>
         <segue reference="fBb-Sn-MKN"/>
-        <segue reference="qYa-9k-VC7"/>
+        <segue reference="C5i-AT-JnT"/>
+        <segue reference="jNI-Ui-1ha"/>
     </inferredMetricsTieBreakers>
 </document>

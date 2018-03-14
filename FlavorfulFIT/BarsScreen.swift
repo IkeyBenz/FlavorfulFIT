@@ -24,7 +24,7 @@ class BarsScreen: UIViewController {
         for button in buttons {
             tagNumber += 1
             button?.tag = tagNumber
-            button?.titleLabel?.numberOfLines = 3
+            button?.titleLabel?.numberOfLines = 0
             button?.titleLabel?.textAlignment = .center
             button?.imageView?.contentMode = UIViewContentMode.scaleAspectFill
             button?.imageView?.clipsToBounds = true

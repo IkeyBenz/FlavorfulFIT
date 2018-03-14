@@ -20,9 +20,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func crumbsScreenClicked(_ sender: Any) {
-        Singleton.sharedInstance.requestedBarTag = 7
-    }
     
 }
 

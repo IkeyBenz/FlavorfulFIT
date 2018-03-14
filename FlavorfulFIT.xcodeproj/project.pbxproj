@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1135B8492058FC6A00278706 /* MixesAndCrumbsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */; };
 		1149F038203A56EE0013B37F /* BarOrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F037203A56EE0013B37F /* BarOrderScreen.swift */; };
 		1149F03A203A65830013B37F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F039203A65830013B37F /* Singleton.swift */; };
 		C6088272203E16C800AE3100 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088271203E16C800AE3100 /* Segues.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		0E368EE13C8B2F93C873B022 /* Pods-FlavorfulFIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlavorfulFIT.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlavorfulFIT/Pods-FlavorfulFIT.release.xcconfig"; sourceTree = "<group>"; };
+		1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixesAndCrumbsScreen.swift; sourceTree = "<group>"; };
 		1149F037203A56EE0013B37F /* BarOrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarOrderScreen.swift; sourceTree = "<group>"; };
 		1149F039203A65830013B37F /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		4AEF4D8D7F74D1998E991CE2 /* Pods_FlavorfulFIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlavorfulFIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				C654FCEE20362EB1009E9DCA /* AppDelegate.swift */,
 				C654FCF020362EB1009E9DCA /* ViewController.swift */,
 				C654FCF220362EB1009E9DCA /* Main.storyboard */,
+				1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */,
 				1149F039203A65830013B37F /* Singleton.swift */,
 				1149F037203A56EE0013B37F /* BarOrderScreen.swift */,
 				C654FD0420363942009E9DCA /* ProgramsScreen.swift */,
@@ -238,6 +241,7 @@
 			files = (
 				C654FCF120362EB1009E9DCA /* ViewController.swift in Sources */,
 				1149F03A203A65830013B37F /* Singleton.swift in Sources */,
+				1135B8492058FC6A00278706 /* MixesAndCrumbsScreen.swift in Sources */,
 				C6088272203E16C800AE3100 /* Segues.swift in Sources */,
 				C654FCEF20362EB1009E9DCA /* AppDelegate.swift in Sources */,
 				C654FD0520363942009E9DCA /* ProgramsScreen.swift in Sources */,
