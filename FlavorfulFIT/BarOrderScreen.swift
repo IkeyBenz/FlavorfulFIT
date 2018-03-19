@@ -8,6 +8,7 @@
 
 import UIKit
 import BraintreeDropIn
+import Braintree
 import Alamofire
 
 class BarOrderScreen: UIViewController {
@@ -19,7 +20,9 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    let clientToken = "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiIyYzNjMjIxOTU3MjJmMDUwZTNhZDJhNmM2ZTgyY2I4YmFhZDRjNWU3Mzg2ZGZjNTA2NzMwNWU3NzI1ZjAxZGQ0fGNyZWF0ZWRfYXQ9MjAxOC0wMy0wOFQxODo0MDowMi44Njk5NzMxOTQrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tLzM0OHBrOWNnZjNiZ3l3MmIifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJtZXJjaGFudEFjY291bnRJZCI6ImFjbWV3aWRnZXRzbHRkc2FuZGJveCIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9LCJtZXJjaGFudElkIjoiMzQ4cGs5Y2dmM2JneXcyYiIsInZlbm1vIjoib2ZmIn0="
+    var clientToken: String!
+    var braintreeClient: BTAPIClient!
+    var price: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,8 @@ class BarOrderScreen: UIViewController {
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
-        productImageView.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFill.rawValue)
+        fetchClientToken()
+        productImageView.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFit.rawValue)
         let tag = Singleton.sharedInstance.requestedBarTag!
         var title = ""
         switch tag {
@@ -43,31 +47,37 @@ class BarOrderScreen: UIViewController {
                 title = "Coconut Marzipan"
                 descriptionLabel.text = "Decadent bar with coconut and almond flavor profile. Chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams of sugar. Grain free. Take one with water, keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "CoconutMarzipan")
+                price = 15.00
             break
             case 2:
                 title = "Berries & Cream"
                 descriptionLabel.text = "Sweet vanilla base with a burst of cranberry in every bite. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "BerriesnCream")
+                price = 15.00
             break
             case 3:
                 title = "Chocolate Peanut Butter"
                 descriptionLabel.text = "Delicious fudgey peanut butter bar. Crunchy peanuts and chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "ChocoPeanut")
+                price = 15.00
             break
             case 4:
                 title = "Chocolate Brownie"
                 descriptionLabel.text = "Rich chocolate brownie loaded with chocolate chips and deep cocoa flavor. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "ChocoBrownie")
+                price = 15.00
             break
             case 5:
                 title = "Assorted Chocolate"
                 descriptionLabel.text = "Assorted box of chocolate-based FlavorfulFIT Meal Replacement Bars (Chocolate Peanut Butter and Chocolate Brownie). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "AssortedChocolate")
+                price = 15.00
             break
             case 6:
                 title = "Assorted Vanilla";
                 descriptionLabel.text = "Assorted box of vanilla-based FlavorfulFIT Meal Replacement Bars (Coconut Marzipan and Berries & Cream). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- Pack of 7."
                 productImageView.image = UIImage(named: "AssortedVanilla")
+                price = 15.00
             break
             case 7:
                 title = "Sesame Crumb Coating"
@@ -99,12 +109,15 @@ class BarOrderScreen: UIViewController {
     
     @IBAction func orderButtonPressed(_ sender: Any) {
         if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
-            showDropIn(clientTokenOrTokenizationKey: clientToken)
+            showDropIn(clientTokenOrTokenizationKey: self.clientToken)
             submitInfoToGoogleForm(name: nameTF.text!, email: emailTF.text!, phone: phoneTF.text!, packageOrdered: productTitle.text!)
             
             // Send to thank you screen
         } else {
-            // Alert the bitches to fill out the damn form
+            let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
         }
     }
     @objc func back() {
@@ -179,6 +192,7 @@ extension BarOrderScreen {
 }
 
 extension BarOrderScreen {
+    // SHOWS PAYMENT OPTIONS
     func showDropIn(clientTokenOrTokenizationKey: String) {
         let request =  BTDropInRequest()
         let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
@@ -188,11 +202,8 @@ extension BarOrderScreen {
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
-                // Use the BTDropInResult properties to update your UI
-                // result.paymentOptionType
-                // result.paymentMethod
-                // result.paymentIcon
-                // result.paymentDescription
+                // IF ORDER FINISHED CHECKOUT, NONCE IS SENT TO SERVER USING METHOD BELOW
+                self.postNonceToServer(paymentMethodNonce: (result.paymentMethod?.nonce)!)
             }
             controller.dismiss(animated: true, completion: nil)
         }
@@ -200,15 +211,27 @@ extension BarOrderScreen {
     }
     
     func postNonceToServer(paymentMethodNonce: String) {
-        // Update URL with your server
-        let paymentURL = URL(string: "localhost:5000")!
+        // SENDS POST INCLUDING NONCE AND PRICE TO SERVER AT /checkout
+        let paymentURL = URL(string: "https://flavorfulfit.herokuapp.com/checkout")!
         var request = URLRequest(url: paymentURL)
-        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)".data(using: String.Encoding.utf8)
+        request.httpBody = "payment_method_nonce=\(paymentMethodNonce),price=\(price)".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
-            // TODO: Handle success or failure
-            }.resume()
+            if error != nil {
+                print(error)
+            }
+            print(response)
+        }.resume()
+    }
+    func fetchClientToken() {
+        let clientTokenURL = NSURL(string: "https://flavorfulfit.herokuapp.com/client_token")!
+        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
+        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
+        
+        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
+            self.clientToken = String(data: data!, encoding: String.Encoding.utf8)
+        }.resume()
     }
 }
 
