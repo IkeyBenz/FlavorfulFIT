@@ -27,6 +27,7 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var formContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var heightStackView: UIStackView!
     @IBOutlet weak var weightStackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     var clientToken: String!
@@ -53,6 +54,7 @@ class BarOrderScreen: UIViewController {
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
+        
         if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
             showExtraCredentials()
             print("I wonder if this looks like garbage")
@@ -110,10 +112,12 @@ class BarOrderScreen: UIViewController {
             break
             case 9:
                 title = "Men's Two Week Jumpstart"
+                descriptionLabel.text = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
                 productImageView.image = UIImage(named: "MensProgramImg")
             break
             case 10:
                 title = "Women's Two Week Jumpstart"
+                descriptionLabel.text = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
                 productImageView.image = UIImage(named: "WomensProgramImg")
             break
             
