@@ -13,17 +13,34 @@ import Alamofire
 
 class BarOrderScreen: UIViewController {
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var formContainer: UIStackView!
+    
+    var heightTF = UITextField()
+    var weightTF = UITextField()
     
     var clientToken: String!
     var braintreeClient: BTAPIClient!
     var price: Double!
     
+    func displayExtraCredentials() {
+        let heightLabel = UILabel(frame: nameLabel.frame)
+        let weightLabel = UILabel(frame: nameLabel.frame)
+        heightLabel.text = "Height:"
+        weightLabel.text = "Weight:"
+        self.heightTF = UITextField(frame: nameTF.frame)
+        self.weightTF = UITextField(frame: nameTF.frame)
+        let heightStackView = UIStackView(arrangedSubviews: [heightLabel, heightTF])
+        let weightStackView = UIStackView(arrangedSubviews: [weightLabel, weightTF])
+        self.formContainer.addSubview(heightStackView)
+        self.formContainer.addSubview(weightStackView)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -38,6 +55,11 @@ class BarOrderScreen: UIViewController {
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
+        if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+            displayExtraCredentials()
+            print("I wonder if this looks like garbage")
+            print("Hey future Ikey, does this look like garbage?")
+        }
         fetchClientToken()
         productImageView.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFit.rawValue)
         let tag = Singleton.sharedInstance.requestedBarTag!
@@ -192,8 +214,7 @@ extension BarOrderScreen {
     // SHOWS PAYMENT OPTIONS
     func showDropIn(clientTokenOrTokenizationKey: String) {
         let request =  BTDropInRequest()
-        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-        { (controller, result, error) in
+        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request) { (controller, result, error) in
             if (error != nil) {
                 print("ERROR")
             } else if (result?.isCancelled == true) {
@@ -215,14 +236,14 @@ extension BarOrderScreen {
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
-            if error != nil {
+            if error == nil {
                 var messageAddon = ""
                 if Singleton.sharedInstance.requestedBarTag <= 8 {
                     messageAddon = "Your package will be ready for pickup on Sunday."
                 } else {
                     messageAddon = "Check your email for your two-week program."
                 }
-                let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(self.productTitle.text). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(String(describing: self.productTitle.text)). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, packageOrdered: self.productTitle.text!)
@@ -231,7 +252,6 @@ extension BarOrderScreen {
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
         }.resume()
     }
     func fetchClientToken() {
