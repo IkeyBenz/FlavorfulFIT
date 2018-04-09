@@ -132,14 +132,23 @@ class BarOrderScreen: UIViewController {
     
     
     @IBAction func orderButtonPressed(_ sender: Any) {
-        if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
-            showDropIn(clientTokenOrTokenizationKey: self.clientToken)
-        } else {
-            let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+        let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        if Singleton.sharedInstance.requestedBarTag < 9 {
+            if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
+                showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+            } else {
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+            if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
+                showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+            } else {
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+        
+        
     }
     @objc func back() {
         if Singleton.sharedInstance.requestedBarTag < 7 {
@@ -180,12 +189,12 @@ extension BarOrderScreen: UITextFieldDelegate {
 }
 
 extension BarOrderScreen {
-    func submitInfoToGoogleForm(name: String, email: String, phone: String, packageOrdered: String) {
+    func submitInfoToGoogleForm(name: String, email: String, phone: String, height: String, weight: String, packageOrdered: String) {
         let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLSduPIk62Xwzf6gZP_tI4I1L1_u3cdyZw4Se0K_mQgDjXK09ow/formResponse")!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "xml")
         request.httpMethod = "POST"
-        let postString = "entry.2068669238=\(name)&entry.286274381=\(email)&entry.854835347=\(phone)&entry.39836842=\(packageOrdered)"
+        let postString = "entry.2068669238=\(name)&entry.286274381=\(email)&entry.854835347=\(phone)&entry.1549493791=\(height)&entry.2068669238=\(weight)&entry.39836842=\(packageOrdered)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -236,18 +245,23 @@ extension BarOrderScreen {
                 if Singleton.sharedInstance.requestedBarTag <= 8 {
                     messageAddon = "Your package will be ready for pickup on Sunday."
                 } else {
-                    messageAddon = "Check your email for your two-week program."
+                    messageAddon = "Your two-week program will be emailed to you within two business days."
                 }
                 let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(String(describing: self.productTitle.text)). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-                self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, packageOrdered: self.productTitle.text!)
+                if Singleton.sharedInstance.requestedBarTag < 9 {
+                    self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!)
+                } else {
+                    self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!)
+                }
+                
             } else {
                 let alert = UIAlertController(title: "Error!", message: "Something went wrong. Please ensure your credit card details are correct.", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            print(response)
+            print(response!)
         }.resume()
     }
     func fetchClientToken() {
