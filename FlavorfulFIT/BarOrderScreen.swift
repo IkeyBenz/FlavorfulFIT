@@ -20,7 +20,9 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var nameStackView: UIStackView!
     @IBOutlet weak var formContainer: UIStackView!
+    @IBOutlet weak var formContainerHeight: NSLayoutConstraint!
     
     var heightTF = UITextField()
     var weightTF = UITextField()
@@ -36,10 +38,17 @@ class BarOrderScreen: UIViewController {
         weightLabel.text = "Weight:"
         self.heightTF = UITextField(frame: nameTF.frame)
         self.weightTF = UITextField(frame: nameTF.frame)
+        
         let heightStackView = UIStackView(arrangedSubviews: [heightLabel, heightTF])
         let weightStackView = UIStackView(arrangedSubviews: [weightLabel, weightTF])
+        
         self.formContainer.addSubview(heightStackView)
         self.formContainer.addSubview(weightStackView)
+        formContainerHeight.constant += 66
+        
+        weightStackView.addConstraint(NSLayoutConstraint(item: weightStackView, attribute: .height, relatedBy: .equal, toItem: nameStackView, attribute: .height, multiplier: 1, constant: 0))
+        heightStackView.addConstraint(NSLayoutConstraint(item: heightStackView, attribute: .height, relatedBy: .equal, toItem: nameStackView, attribute: .height, multiplier: 1, constant: 0))
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
