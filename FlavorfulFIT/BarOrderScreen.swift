@@ -18,38 +18,27 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
+    @IBOutlet weak var heightTF: UITextField!
+    @IBOutlet weak var weightTF: UITextField!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nameStackView: UIStackView!
     @IBOutlet weak var formContainer: UIStackView!
     @IBOutlet weak var formContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var heightStackView: UIStackView!
+    @IBOutlet weak var weightStackView: UIStackView!
     
-    var heightTF = UITextField()
-    var weightTF = UITextField()
     
     var clientToken: String!
     var braintreeClient: BTAPIClient!
     var price: Double!
     
-    func displayExtraCredentials() {
-        let heightLabel = UILabel(frame: nameLabel.frame)
-        let weightLabel = UILabel(frame: nameLabel.frame)
-        heightLabel.text = "Height:"
-        weightLabel.text = "Weight:"
-        self.heightTF = UITextField(frame: nameTF.frame)
-        self.weightTF = UITextField(frame: nameTF.frame)
-        
-        let heightStackView = UIStackView(arrangedSubviews: [heightLabel, heightTF])
-        let weightStackView = UIStackView(arrangedSubviews: [weightLabel, weightTF])
-        
-        self.formContainer.addSubview(heightStackView)
-        self.formContainer.addSubview(weightStackView)
-        formContainerHeight.constant += 66
-        
-        weightStackView.addConstraint(NSLayoutConstraint(item: weightStackView, attribute: .height, relatedBy: .equal, toItem: nameStackView, attribute: .height, multiplier: 1, constant: 0))
-        heightStackView.addConstraint(NSLayoutConstraint(item: heightStackView, attribute: .height, relatedBy: .equal, toItem: nameStackView, attribute: .height, multiplier: 1, constant: 0))
-        
+    func showExtraCredentials() {
+        heightStackView.isHidden = false
+        weightStackView.isHidden = false
+        formContainerHeight.constant = 130
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -65,7 +54,7 @@ class BarOrderScreen: UIViewController {
             object: nil
         )
         if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
-            displayExtraCredentials()
+            showExtraCredentials()
             print("I wonder if this looks like garbage")
             print("Hey future Ikey, does this look like garbage?")
         }
@@ -171,13 +160,6 @@ class BarOrderScreen: UIViewController {
         self.view.frame.origin.y = 0
     }
     
-    @objc func moveScreenUp() {
-        self.view.frame.origin.y = -300
-    }
-    
-    @objc func moveScreenDown() {
-        self.view.frame.origin.y = 0
-    }
 }
 
 extension BarOrderScreen: UITextFieldDelegate {
@@ -261,6 +243,7 @@ extension BarOrderScreen {
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            print(response)
         }.resume()
     }
     func fetchClientToken() {
