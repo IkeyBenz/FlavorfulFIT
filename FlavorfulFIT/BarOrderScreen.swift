@@ -10,6 +10,7 @@ import UIKit
 import BraintreeDropIn
 import Braintree
 import Alamofire
+import WebKit
 
 class BarOrderScreen: UIViewController {
     
@@ -28,6 +29,10 @@ class BarOrderScreen: UIViewController {
     @IBOutlet weak var heightStackView: UIStackView!
     @IBOutlet weak var weightStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var orderButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var orderbuttonHeight: NSLayoutConstraint!
     
     
     var clientToken: String!
@@ -39,7 +44,22 @@ class BarOrderScreen: UIViewController {
         weightStackView.isHidden = false
         formContainerHeight.constant = 130
     }
-    
+    func showNDA() {
+        let path = Bundle.main.path(forResource: "NDA", ofType: "pdf")
+        let url = URL(fileURLWithPath: path!)
+        print(url)
+        let request = URLRequest(url: url)
+        webView.load(request)
+        webView.isHidden = false
+        orderButton.setTitle("I Agree to The Terms Listed Above", for: .normal)
+        orderButton.titleLabel?.numberOfLines = 3
+        orderButton.titleLabel?.textAlignment = .center
+        orderButtonWidth.constant = 120
+        orderbuttonHeight.constant = 60
+    }
+    @objc func continueProgramPurchase() {
+        print("User acceps terms.")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -134,19 +154,28 @@ class BarOrderScreen: UIViewController {
     @IBAction func orderButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        if Singleton.sharedInstance.requestedBarTag < 9 {
-            if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
-                showDropIn(clientTokenOrTokenizationKey: self.clientToken)
-            } else {
-                self.present(alert, animated: true, completion: nil)
+        print("Order button was pressed")
+        if orderButton.titleLabel!.text == "Order" {
+            if Singleton.sharedInstance.requestedBarTag < 9 {
+                if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
+                    showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+                } else {
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+                if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
+                    print("Showing NDA")
+                    showNDA()
+                    //showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+                } else {
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-        } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
-            if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
-                showDropIn(clientTokenOrTokenizationKey: self.clientToken)
-            } else {
-                self.present(alert, animated: true, completion: nil)
-            }
+        } else if orderButton.titleLabel!.text == "I Agree to The Terms Listed Above" {
+            webView.isHidden = true
+            showDropIn(clientTokenOrTokenizationKey: self.clientToken)
         }
+        
         
         
     }
@@ -182,7 +211,15 @@ extension BarOrderScreen: UITextFieldDelegate {
         } else if textField.tag == 2 {
             phoneTF.becomeFirstResponder()
         } else if textField.tag == 3 {
-            phoneTF.resignFirstResponder()
+            if Singleton.sharedInstance.requestedBarTag < 9 {
+                phoneTF.resignFirstResponder()
+            } else {
+                heightTF.becomeFirstResponder()
+            }
+        } else if textField == heightTF {
+            weightTF.becomeFirstResponder()
+        } else if textField == weightTF {
+            weightTF.resignFirstResponder()
         }
         return true
     }
@@ -223,6 +260,9 @@ extension BarOrderScreen {
                 print("ERROR")
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
+                self.orderButton.setTitle("Order", for: .normal)
+                self.orderButtonWidth.constant = 60
+                self.orderbuttonHeight.constant = 35
             } else if let result = result {
                 // IF ORDER FINISHED CHECKOUT, NONCE IS SENT TO SERVER USING METHOD BELOW
                 self.postNonceToServer(paymentMethodNonce: (result.paymentMethod?.nonce)!)
