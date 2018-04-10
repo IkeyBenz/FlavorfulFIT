@@ -37,7 +37,7 @@ class BarOrderScreen: UIViewController {
     
     var clientToken: String!
     var braintreeClient: BTAPIClient!
-    var price: Double!
+    var price: Double = 0.01
     
     func showExtraCredentials() {
         heightStackView.isHidden = false
@@ -216,9 +216,10 @@ extension BarOrderScreen: UITextFieldDelegate {
             } else {
                 heightTF.becomeFirstResponder()
             }
-        } else if textField == heightTF {
+        }
+        if textField.tag == 4 {
             weightTF.becomeFirstResponder()
-        } else if textField == weightTF {
+        } else if textField.tag == 5 {
             weightTF.resignFirstResponder()
         }
         return true
@@ -235,17 +236,17 @@ extension BarOrderScreen {
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
+//                print("error=\(String(describing: error))")
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
+//                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+//                print("response = \(String(describing: response))")
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(String(describing: responseString))")
+            //print("responseString = \(String(describing: responseString))")
         }
         task.resume()
     }
@@ -276,7 +277,7 @@ extension BarOrderScreen {
         // SENDS POST INCLUDING NONCE AND PRICE TO SERVER AT /checkout
         let paymentURL = URL(string: "https://flavorfulfit.herokuapp.com/checkout")!
         var request = URLRequest(url: paymentURL)
-        request.httpBody = "payment_method_nonce=\(paymentMethodNonce),price=\(price)".data(using: String.Encoding.utf8)
+        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)&&price=\(price)".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
@@ -287,21 +288,23 @@ extension BarOrderScreen {
                 } else {
                     messageAddon = "Your two-week program will be emailed to you within two business days."
                 }
-                let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(String(describing: self.productTitle.text)). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                if Singleton.sharedInstance.requestedBarTag < 9 {
-                    self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!)
-                } else {
-                    self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(String(describing: self.productTitle.text!)). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    if Singleton.sharedInstance.requestedBarTag < 9 {
+                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!)
+                    } else {
+                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!)
+                    }
                 }
                 
             } else {
-                let alert = UIAlertController(title: "Error!", message: "Something went wrong. Please ensure your credit card details are correct.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                let errorAlert = UIAlertController(title: "Error!", message: "Something went wrong. Please ensure your credit card details are correct.", preferredStyle: UIAlertControllerStyle.alert)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
             }
-            print(response!)
+            print(String(data: data!, encoding: String.Encoding.utf8))
         }.resume()
     }
     func fetchClientToken() {
