@@ -74,7 +74,6 @@ class BarOrderScreen: UIViewController {
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
-        
         if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
             showExtraCredentials()
             print("I wonder if this looks like garbage")
@@ -87,57 +86,79 @@ class BarOrderScreen: UIViewController {
         switch tag {
             case 1:
                 title = "Coconut Marzipan"
-                descriptionLabel.text = "Decadent bar with coconut and almond flavor profile. Chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams of sugar. Grain free. Take one with water, keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Decadent bar with coconut and almond flavor profile. Chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams of sugar. Grain free. Take one with water, keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "CoconutMarzipan")
                 price = 15.00
             break
             case 2:
                 title = "Berries & Cream"
-                descriptionLabel.text = "Sweet vanilla base with a burst of cranberry in every bite. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Sweet vanilla base with a burst of cranberry in every bite. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "BerriesnCream")
                 price = 15.00
             break
             case 3:
                 title = "Chocolate Peanut Butter"
-                descriptionLabel.text = "Delicious fudgey peanut butter bar. Crunchy peanuts and chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Delicious fudgey peanut butter bar. Crunchy peanuts and chocolate chips sprinkled throughout. A full nutritious meal at 200 calories with only 2 grams sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "ChocoPeanut")
                 price = 15.00
             break
             case 4:
                 title = "Chocolate Brownie"
-                descriptionLabel.text = "Rich chocolate brownie loaded with chocolate chips and deep cocoa flavor. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Rich chocolate brownie loaded with chocolate chips and deep cocoa flavor. A full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "ChocoBrownie")
                 price = 15.00
             break
             case 5:
                 title = "Assorted Chocolate"
-                descriptionLabel.text = "Assorted box of chocolate-based FlavorfulFIT Meal Replacement Bars (Chocolate Peanut Butter and Chocolate Brownie). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Assorted box of chocolate-based FlavorfulFIT Meal Replacement Bars (Chocolate Peanut Butter and Chocolate Brownie). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains peanuts and tree nuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "AssortedChocolate")
                 price = 15.00
             break
             case 6:
                 title = "Assorted Vanilla";
-                descriptionLabel.text = "Assorted box of vanilla-based FlavorfulFIT Meal Replacement Bars (Coconut Marzipan and Berries & Cream). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Assorted box of vanilla-based FlavorfulFIT Meal Replacement Bars (Coconut Marzipan and Berries & Cream). Each one is a full nutritious meal at 200 calories, with only 2 grams of sugar. Grain free. Take one with water. Keep frozen.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "AssortedVanilla")
                 price = 15.00
             break
             case 7:
                 title = "Sesame Crumb Coating"
-                descriptionLabel.text = "Crunchy seasoned grainless 'breadcrumbs' with sesame. Use on anything from chicken, to fish, to veggies. Amazing baked or air fried! One pound container.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $15 for a pack of 7."
+                let desc = "Crunchy seasoned grainless 'breadcrumbs' with sesame. Use on anything from chicken, to fish, to veggies. Amazing baked or air fried! One pound container.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $8 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $8 for a pack of 7."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
+                price = 8.00
                 productImageView.image = UIImage(named: "CrumbsImg")
             break
             case 8:
                 title = "FlavorfulFIX"
                 descriptionLabel.text = "A healthy, clean, and vegan alternative to Duncan Hines or Betty Crocker mix. Just add a couple of wet ingredients, and bake as a loaf or muffins. Get the fix your sweet tooth craves the FlavorfulFIT way. Perfect for adults and kids!\nCertified Kosher Parve."
+                price = 7.00
+                productImageView.image = UIImage(named: "CrumbsCover")
             break
             case 9:
                 title = "Men's Two Week Jumpstart"
-                descriptionLabel.text = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
+                let desc = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
+                let bullets = "- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau.\n\n***NoPrep Program is not to be done more than twice in a six month period.\n***Please visit Flavorful.com/about for more information on the FlavorfulFIT program. Teleconference introduction will be held Wednesday night at 8:30 PM Eastern. \n***Sharing any information from this program or any data from FlavorfulFIT is punishable in a court of law. FlavorfulFIT and all of its entities is copyrighted and is a registered trademark 2018.\n\nLife can get hectic. Easily take care of your health with the FlavorfulFIT NoPrep Program."
+                
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "MensProgramImg")
             break
             case 10:
                 title = "Women's Two Week Jumpstart"
-                descriptionLabel.text = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
+                let desc = "The FlavorfulFIT lifestyle is all about healthy, balanced meals to help you have a healthy, balanced life. But sometimes, preparing three meals a day can be tough.\n\nWhether you’re going on vacation, moving to a new house, or planning a wedding, busy days can get the best of us. Skipping meals and bingeing later can have a terrible effect on the body’s metabolism. But now, there is an FFApproved NoPrep program to help give you a break for two weeks.\n\nDesigned for people on the go, the 2 Week NoPrep will give you the break you need, while allowing you to lose weight in a consistent and healthy way, with no bounce back. This is a CLEAN, Whole Foods program with ingredients you easily recognize. FlavorfulFIT meal replacement bars, healthy snacks, and a homemade dinner will keep you energized throughout the day.\n\nMenus, recipes, and bars are all included! Plus, get admitted into a NoPrep chat, for extra motivation and assistance.\n\nThe 2 week NoPrep Program will be in between two weeks of your choice of the FlavorfulFIT Movement in a total of a one month enrollment. Week one of the month will be FFMovement, then 2 weeks of NoPrep, and another week of FFMovement will follow.\n\n- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau."
+                let bullets = "- New clients can choose to use NoPrep Program as week 2 and 3 of the FFMovement or later.\n- Existing members can choose to do NoPrep in between their current month, or any month they choose to fit in with their schedule.\n- Existing members can use the NoPrep Program as a boost to get past a plateau.\n\n***NoPrep Program is not to be done more than twice in a six month period.\n***Please visit Flavorful.com/about for more information on the FlavorfulFIT program. Teleconference introduction will be held Wednesday night at 8:30 PM Eastern. \n***Sharing any information from this program or any data from FlavorfulFIT is punishable in a court of law. FlavorfulFIT and all of its entities is copyrighted and is a registered trademark 2018.\n\nLife can get hectic. Easily take care of your health with the FlavorfulFIT NoPrep Program."
+                descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 productImageView.image = UIImage(named: "WomensProgramImg")
             break
             
@@ -147,14 +168,33 @@ class BarOrderScreen: UIViewController {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(back))
         swipeGesture.direction = .right
         self.view.addGestureRecognizer(swipeGesture)
+        
+    }
+    func makeBulletsBolded(wholeStr: String, bullets: String) -> NSMutableAttributedString {
+        let regularFont = UIFont(name: "TrebuchetMS", size: 16.0)
+        let boldFont = UIFont(name: "TrebuchetMS-Bold", size: 18.0)
+        let boldStrRange = (wholeStr as NSString).range(of: bullets)
+        let attributedString = NSMutableAttributedString(string: wholeStr, attributes: [NSAttributedStringKey.font : regularFont!])
+        attributedString.setAttributes([NSAttributedStringKey.font : boldFont!], range: boldStrRange)
+        return attributedString
     }
     
-    
+    func askIfUserIsNewOrOldCustomer() {
+        let alert = UIAlertController(title: "Are you a new or already existing customer?", message: "New customers will receive week 1 and week 2 of the FlavorfulFIT Movement including detox, plus the NoPrep Plan. Existing customers will receive their next two weeks plus NoPrep Plan.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "New", style: UIAlertActionStyle.default, handler: {action in
+            self.price = 170.00
+            self.showNDA()
+        }))
+        alert.addAction(UIAlertAction(title: "Existing", style: UIAlertActionStyle.default, handler: {action in
+            self.price = 130.00
+            self.showNDA()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     @IBAction func orderButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        print("Order button was pressed")
         if orderButton.titleLabel!.text == "Order" {
             if Singleton.sharedInstance.requestedBarTag < 9 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
@@ -164,9 +204,7 @@ class BarOrderScreen: UIViewController {
                 }
             } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
-                    print("Showing NDA")
-                    showNDA()
-                    //showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+                    askIfUserIsNewOrOldCustomer()
                 } else {
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -245,7 +283,7 @@ extension BarOrderScreen {
 //                print("response = \(String(describing: response))")
             }
             
-            let responseString = String(data: data, encoding: .utf8)
+            //let responseString = String(data: data, encoding: .utf8)
             //print("responseString = \(String(describing: responseString))")
         }
         task.resume()
