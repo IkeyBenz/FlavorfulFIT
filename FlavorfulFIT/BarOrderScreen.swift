@@ -135,14 +135,14 @@ class BarOrderScreen: UIViewController {
             case 7:
                 title = "Sesame Crumb Coating"
                 let desc = "Crunchy seasoned grainless 'breadcrumbs' with sesame. Use on anything from chicken, to fish, to veggies. Amazing baked or air fried! One pound container.\n\n*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $8 for a pack of 7."
-                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $8 for a pack of 7."
+                let bullets = "*Contains tree nuts.\n*Processed on equipment that handles peanuts.\n- Certified Kosher Parve.\n- $8/Lb"
                 descriptionLabel.attributedText = makeBulletsBolded(wholeStr: desc, bullets: bullets)
                 price = 8.00
                 productImageView.image = UIImage(named: "CrumbsImg")
             break
             case 8:
                 title = "Flavorful FIX"
-                descriptionLabel.text = "A healthy, clean, and vegan alternative to Duncan Hines or Betty Crocker mix. Just add a couple of wet ingredients, and bake as a loaf or muffins. Get the fix your sweet tooth craves the FlavorfulFIT way. Perfect for adults and kids!\nCertified Kosher Parve."
+                descriptionLabel.text = "A healthy, clean, and vegan alternative to Duncan Hines or Betty Crocker mix. Just add a couple of wet ingredients, and bake as a loaf or muffins. Get the fix your sweet tooth craves the FlavorfulFIT way. Perfect for adults and kids!\nCertified Kosher Parve.\n- 7$"
                 price = 7.00
                 productImageView.image = UIImage(named: "CrumbsCover")
             break

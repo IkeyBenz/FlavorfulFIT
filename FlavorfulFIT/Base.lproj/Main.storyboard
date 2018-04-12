@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -441,9 +440,9 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="505"/>
                                 <subviews>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgK-1a-Ov4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
-                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="61"/>
-                                        <state key="normal" title="Mixes" backgroundImage="CrumbsCover">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="251.66666666666666"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="50"/>
+                                        <state key="normal" title="FlavorfulFIX" backgroundImage="FlavorfulFIX">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -451,7 +450,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hV2-NV-8Wm">
-                                        <rect key="frame" x="0.0" y="254" width="375" height="251"/>
+                                        <rect key="frame" x="0.0" y="253.66666666666669" width="375" height="251.33333333333331"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="61"/>
                                         <state key="normal" title="Crumbs" backgroundImage="CrumbsImg">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -797,6 +796,7 @@
         <image name="CoconutMarzipan" width="3981" height="3388"/>
         <image name="CrumbsCover" width="4896" height="3264"/>
         <image name="CrumbsImg" width="5184" height="3456"/>
+        <image name="FlavorfulFIX" width="2208" height="1472"/>
         <image name="MensProgramImg" width="720" height="480"/>
         <image name="ProgramsCover" width="2550" height="1700"/>
         <image name="WomensProgramImg" width="870" height="580"/>
