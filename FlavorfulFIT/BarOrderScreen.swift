@@ -200,7 +200,12 @@ class BarOrderScreen: UIViewController {
         if orderButton.titleLabel!.text == "Order" {
             if Singleton.sharedInstance.requestedBarTag < 9 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
-                    showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+                    if canBuyAtThisTime() {
+                        showDropIn(clientTokenOrTokenizationKey: self.clientToken)
+                    } else {
+                        let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once a week", message: "Please wait until Monday to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
+                        self.present(cantBuyAlert, animated: true, completion: nil)
+                    }
                 } else {
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -215,9 +220,17 @@ class BarOrderScreen: UIViewController {
             webView.isHidden = true
             showDropIn(clientTokenOrTokenizationKey: self.clientToken)
         }
+    }
+    func canBuyAtThisTime() -> Bool {
+        let lastPurchaseTime = Singleton.sharedInstance.lastBarPurchaseTime
+        if lastPurchaseTime == nil {
+            return true
+        }
+        let calendar = NSCalendar(calendarIdentifier: .gregorian)
+        let now = calendar!.components([.day, .month, .weekOfMonth, .year], from: Date())
+        let before = calendar!.components([.day, .month, .weekOfMonth, .year], from: lastPurchaseTime as! Date)
         
-        
-        
+        return now.day != before.day || now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
     }
     @objc func back() {
         if Singleton.sharedInstance.requestedBarTag < 7 {
@@ -275,18 +288,18 @@ extension BarOrderScreen {
         let postString = "entry.551467928=\(name)&entry.286274381=\(email)&entry.854835347=\(phone)&entry.39836842=\(packageOrdered)&entry.1549493791=\(height)&entry.2068669238=\(weight)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-//                print("error=\(String(describing: error))")
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-//                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//                print("response = \(String(describing: response))")
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
             }
             
-            //let responseString = String(data: data, encoding: .utf8)
-            //print("responseString = \(String(describing: responseString))")
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(String(describing: responseString))")
         }
         task.resume()
     }
@@ -333,6 +346,9 @@ extension BarOrderScreen {
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     if Singleton.sharedInstance.requestedBarTag < 9 {
+                        if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+                            Singleton.sharedInstance.lastBarPurchaseTime = Date()
+                        }
                         self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!)
                     } else {
                         self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!)
