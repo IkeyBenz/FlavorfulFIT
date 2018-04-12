@@ -272,7 +272,7 @@ extension BarOrderScreen {
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "xml")
         request.httpMethod = "POST"
-        let postString = "entry.2068669238=\(name)&entry.286274381=\(email)&entry.854835347=\(phone)&entry.1549493791=\(height)&entry.2068669238=\(weight)&entry.39836842=\(packageOrdered)"
+        let postString = "entry.551467928=\(name)&entry.286274381=\(email)&entry.854835347=\(phone)&entry.39836842=\(packageOrdered)&entry.1549493791=\(height)&entry.2068669238=\(weight)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
