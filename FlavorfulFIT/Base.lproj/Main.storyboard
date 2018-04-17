@@ -575,7 +575,7 @@
                                                 <rect key="frame" x="54.666666666666657" y="0.0" width="260.33333333333337" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" textContentType="name"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="hY0-ae-xXC" id="xgN-IN-lBZ"/>
                                                 </connections>
@@ -595,7 +595,7 @@
                                                 <rect key="frame" x="53.666666666666657" y="0.0" width="261.33333333333337" height="30.666666666666668"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="hY0-ae-xXC" id="wNk-4L-cK3"/>
                                                 </connections>
@@ -615,7 +615,7 @@
                                                 <rect key="frame" x="57.333333333333343" y="0.0" width="257.66666666666663" height="29.333333333333332"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" smartDashesType="yes" textContentType="tel"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="hY0-ae-xXC" id="5Vd-yg-c19"/>
                                                 </connections>
@@ -635,7 +635,7 @@
                                                 <rect key="frame" x="61.333333333333329" y="0.0" width="253.66666666666669" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="hY0-ae-xXC" id="xAq-Lc-b4K"/>
                                                 </connections>
@@ -655,9 +655,29 @@
                                                 <rect key="frame" x="64" y="0.0" width="251" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="postal-code"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="hY0-ae-xXC" id="p6G-Ov-PBI"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ck-0w-4AZ" userLabel="Quantity Stack View">
+                                        <rect key="frame" x="0.0" y="100" width="315" height="0.0"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-lV-9Je">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBf-yj-Hfv">
+                                                <rect key="frame" x="72" y="0.0" width="243" height="0.0"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="WIz-Yj-qg4"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -772,6 +792,8 @@
                         <outlet property="phoneTF" destination="skb-8h-2JF" id="5D1-gh-I4j"/>
                         <outlet property="productImageView" destination="KD6-xA-kK2" id="RCv-kw-8Sz"/>
                         <outlet property="productTitle" destination="cRz-c5-Aeu" id="ue8-a6-mNh"/>
+                        <outlet property="quantityStackView" destination="4ck-0w-4AZ" id="rht-eu-krh"/>
+                        <outlet property="quantityTF" destination="oBf-yj-Hfv" id="1tn-cq-0pp"/>
                         <outlet property="scrollView" destination="Fhy-2p-zzR" id="ihv-Cy-rFf"/>
                         <outlet property="webView" destination="LMM-h3-VVk" id="s8e-7h-9o0"/>
                         <outlet property="weightStackView" destination="sLU-Pb-Lil" id="XfU-oP-tIs"/>
