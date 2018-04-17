@@ -49,7 +49,7 @@ class BarOrderScreen: UIViewController {
         formContainerHeight.constant = 130
     }
     func showQuantityTF() {
-        quantityTF.isHidden = false
+        quantityStackView.isHidden = false
         formContainerHeight.constant = 115
     }
     func showNDA() {
@@ -65,9 +65,7 @@ class BarOrderScreen: UIViewController {
         orderButtonWidth.constant = 120
         orderbuttonHeight.constant = 60
     }
-    @objc func continueProgramPurchase() {
-        print("User acceps terms.")
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textfields = [nameTF, emailTF, phoneTF, weightTF, heightTF, quantityTF]
@@ -87,6 +85,7 @@ class BarOrderScreen: UIViewController {
             showHeightAndWeight()
         }
         if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+            print("This happened")
             showQuantityTF()
         }
         fetchClientToken()
@@ -257,7 +256,7 @@ class BarOrderScreen: UIViewController {
         let now = calendar!.components([.day, .month, .weekOfMonth, .year], from: Date())
         let before = calendar!.components([.day, .month, .weekOfMonth, .year], from: lastPurchaseTime as! Date)
         
-        return now.day != before.day || now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
+        return now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
     }
     @objc func back() {
         if Singleton.sharedInstance.requestedBarTag < 7 {
