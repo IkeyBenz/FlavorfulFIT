@@ -219,7 +219,9 @@ class BarOrderScreen: UIViewController {
                     if canBuyAtThisTime() {
                         showDropIn(clientTokenOrTokenizationKey: self.clientToken)
                     } else {
-                        let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once a week", message: "Please wait until Monday to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
+                        let lastPurchaseTime = (Singleton.sharedInstance.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
+                        let day = lastPurchaseTime[...lastPurchaseTime.index(of: "y")!]
+                        let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once per weekly cycle.", message: "Please wait until \(day) to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
                         self.present(cantBuyAlert, animated: true, completion: nil)
                     }
                 } else {
@@ -252,11 +254,14 @@ class BarOrderScreen: UIViewController {
         if lastPurchaseTime == nil {
             return true
         }
-        let calendar = NSCalendar(calendarIdentifier: .gregorian)
-        let now = calendar!.components([.day, .month, .weekOfMonth, .year], from: Date())
-        let before = calendar!.components([.day, .month, .weekOfMonth, .year], from: lastPurchaseTime as! Date)
         
-        return now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
+        let itsBeenMoreThanAweek = Date().timeIntervalSince(lastPurchaseTime as! Date) > 604800
+        let todayDesc = Date().description(with: Locale(identifier: "Day"))
+        let prevDesc = (lastPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
+        let sameDayOfWeek = todayDesc[...todayDesc.index(of: "y")!] == prevDesc[...prevDesc.index(of: "y")!]
+        let itsBeenMoreThanAday = Date().timeIntervalSince(lastPurchaseTime as! Date) > 86400
+
+        return itsBeenMoreThanAweek || (sameDayOfWeek && itsBeenMoreThanAday)
     }
     @objc func back() {
         if Singleton.sharedInstance.requestedBarTag < 7 {
@@ -408,4 +413,3 @@ extension BarOrderScreen {
         }.resume()
     }
 }
-
