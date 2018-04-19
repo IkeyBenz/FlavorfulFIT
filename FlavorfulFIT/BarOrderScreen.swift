@@ -85,7 +85,6 @@ class BarOrderScreen: UIViewController {
             showHeightAndWeight()
         }
         if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
-            print("This happened")
             showQuantityTF()
         }
         fetchClientToken()
@@ -254,6 +253,7 @@ class BarOrderScreen: UIViewController {
         if lastPurchaseTime == nil {
             return true
         }
+<<<<<<< Updated upstream
         
         let itsBeenMoreThanAweek = Date().timeIntervalSince(lastPurchaseTime as! Date) > 604800
         let todayDesc = Date().description(with: Locale(identifier: "Day"))
@@ -262,6 +262,17 @@ class BarOrderScreen: UIViewController {
         let itsBeenMoreThanAday = Date().timeIntervalSince(lastPurchaseTime as! Date) > 86400
 
         return itsBeenMoreThanAweek || (sameDayOfWeek && itsBeenMoreThanAday)
+=======
+        let calendar = NSCalendar(calendarIdentifier: .gregorian)
+        let now = calendar!.components([.day, .month, .weekOfMonth, .year], from: Date())
+        let before = calendar!.components([.day, .month, .weekOfMonth, .year], from: lastPurchaseTime as! Date)
+        // If today is Sunday, prevent them from buying bars altogether
+        if now.weekday == 1 {
+            return false
+        }
+        // If todays week of the month (1,2,3,4) is different from last purchases week of the month, let them buy. Purchasing on the first week of two different months would result in prevention of buying so I also check if the months are the same. Same goes for the same month of two different years, so I included that they're allowed to buy if the years are different
+        return now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
+>>>>>>> Stashed changes
     }
     @objc func back() {
         if Singleton.sharedInstance.requestedBarTag < 7 {
