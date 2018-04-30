@@ -17,6 +17,8 @@ class BarsScreen: UIViewController {
     @IBOutlet weak var assortedChoco: UIButton!
     @IBOutlet weak var assortedVanilla: UIButton!
     
+    @IBOutlet weak var optionsStackView: UIStackView!
+    @IBOutlet weak var optionsStackAspect: NSLayoutConstraint!
     
     override func viewDidLoad() {
         let buttons = [ccntMarzpan, berriescream, chcoPeanut, chocoBrownie, assortedChoco, assortedVanilla]
@@ -32,6 +34,11 @@ class BarsScreen: UIViewController {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(back))
         swipeGesture.direction = .right
         self.view.addGestureRecognizer(swipeGesture)
+
+        if UIScreen.main.bounds.height - optionsStackView.frame.maxY < 0 {
+            optionsStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            optionsStackAspect = nil
+        }
     }
     
     @objc func back() {

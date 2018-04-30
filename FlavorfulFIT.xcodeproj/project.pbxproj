@@ -10,6 +10,7 @@
 		1135B8492058FC6A00278706 /* MixesAndCrumbsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */; };
 		1149F038203A56EE0013B37F /* BarOrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F037203A56EE0013B37F /* BarOrderScreen.swift */; };
 		1149F03A203A65830013B37F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149F039203A65830013B37F /* Singleton.swift */; };
+		11B939C32096E28900D83397 /* CartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B939C22096E28900D83397 /* CartScreen.swift */; };
 		11E1C228207C410D0065C0ED /* NDA.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 11E1C227207C410D0065C0ED /* NDA.pdf */; };
 		C6088272203E16C800AE3100 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6088271203E16C800AE3100 /* Segues.swift */; };
 		C654FCEF20362EB1009E9DCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654FCEE20362EB1009E9DCA /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixesAndCrumbsScreen.swift; sourceTree = "<group>"; };
 		1149F037203A56EE0013B37F /* BarOrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarOrderScreen.swift; sourceTree = "<group>"; };
 		1149F039203A65830013B37F /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		11B939C22096E28900D83397 /* CartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreen.swift; sourceTree = "<group>"; };
 		11E1C227207C410D0065C0ED /* NDA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = NDA.pdf; sourceTree = "<group>"; };
 		4AEF4D8D7F74D1998E991CE2 /* Pods_FlavorfulFIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlavorfulFIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE66507FA15E5F96250865B1 /* Pods-FlavorfulFIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlavorfulFIT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlavorfulFIT/Pods-FlavorfulFIT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				C654FCEE20362EB1009E9DCA /* AppDelegate.swift */,
 				C654FCF020362EB1009E9DCA /* ViewController.swift */,
 				C654FCF220362EB1009E9DCA /* Main.storyboard */,
+				11B939C22096E28900D83397 /* CartScreen.swift */,
 				1135B8482058FC6A00278706 /* MixesAndCrumbsScreen.swift */,
 				1149F039203A65830013B37F /* Singleton.swift */,
 				1149F037203A56EE0013B37F /* BarOrderScreen.swift */,
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B939C32096E28900D83397 /* CartScreen.swift in Sources */,
 				C654FCF120362EB1009E9DCA /* ViewController.swift in Sources */,
 				1149F03A203A65830013B37F /* Singleton.swift in Sources */,
 				1135B8492058FC6A00278706 /* MixesAndCrumbsScreen.swift in Sources */,

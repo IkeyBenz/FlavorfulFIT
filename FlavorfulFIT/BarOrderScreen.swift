@@ -210,12 +210,14 @@ class BarOrderScreen: UIViewController {
     }
     
     @IBAction func orderButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        print("Order Button Pressed")
+        let notFilledOut = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
+        notFilledOut.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         if orderButton.titleLabel!.text == "Order" {
             if Singleton.sharedInstance.requestedBarTag < 7 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
                     if canBuyAtThisTime() {
+                        print("Showing Drop In")
                         showDropIn(clientTokenOrTokenizationKey: self.clientToken)
                     } else {
                         let lastPurchaseTime = (Singleton.sharedInstance.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
@@ -224,7 +226,7 @@ class BarOrderScreen: UIViewController {
                         self.present(cantBuyAlert, animated: true, completion: nil)
                     }
                 } else {
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(notFilledOut, animated: true, completion: nil)
                 }
             } else if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && quantityTF.text != "" {
@@ -233,14 +235,15 @@ class BarOrderScreen: UIViewController {
                     } else if Singleton.sharedInstance.requestedBarTag == 8 {
                         self.price = 7.00 * Double(quantityTF.text!)!
                     }
+                    showDropIn(clientTokenOrTokenizationKey: self.clientToken)
                 } else {
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(notFilledOut, animated: true, completion: nil)
                 }
             } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
                     askIfUserIsNewOrOldCustomer()
                 } else {
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(notFilledOut, animated: true, completion: nil)
                 }
             }
         } else if orderButton.titleLabel!.text == "I Agree to The Terms Listed Above" {
@@ -399,11 +402,11 @@ extension BarOrderScreen {
                     self.present(alert, animated: true, completion: nil)
                     if Singleton.sharedInstance.requestedBarTag < 7 {
                         Singleton.sharedInstance.lastBarPurchaseTime = Date()
-                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "--", weight: "--", packageOrdered: self.productTitle.text!, quantity: "--")
+                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!, quantity: "")
                     } else if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
-                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "--", weight: "--", packageOrdered: self.productTitle.text!, quantity: self.quantityTF.text!)
+                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!, quantity: self.quantityTF.text!)
                     } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
-                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!, quantity: "--")
+                        self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!, quantity: "")
                     }
                 }
                 
