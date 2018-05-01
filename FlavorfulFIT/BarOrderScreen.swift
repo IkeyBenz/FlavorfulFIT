@@ -41,7 +41,8 @@ class BarOrderScreen: UIViewController {
     
     var clientToken: String!
     var braintreeClient: BTAPIClient!
-    var price: Double = 0.01
+    var price: Double!
+    let si = Singleton.sharedInstance
     
     func showHeightAndWeight() {
         heightStackView.isHidden = false
@@ -81,15 +82,15 @@ class BarOrderScreen: UIViewController {
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
-        if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+        if si.requestedBarTag == 9 || si.requestedBarTag == 10 {
             showHeightAndWeight()
         }
-        if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+        if si.requestedBarTag == 7 || si.requestedBarTag == 8 {
             showQuantityTF()
         }
         fetchClientToken()
         productImageView.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFit.rawValue)
-        let tag = Singleton.sharedInstance.requestedBarTag!
+        let tag = si.requestedBarTag!
         var title = ""
         switch tag {
             case 1:
@@ -210,36 +211,36 @@ class BarOrderScreen: UIViewController {
     }
     
     @IBAction func orderButtonPressed(_ sender: Any) {
-        print("Order Button Pressed")
         let notFilledOut = UIAlertController(title: "Form not properly filled out", message: "Please fill out form and try again.", preferredStyle: UIAlertControllerStyle.alert)
         notFilledOut.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         if orderButton.titleLabel!.text == "Order" {
-            if Singleton.sharedInstance.requestedBarTag < 7 {
+            if si.requestedBarTag < 7 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" {
                     if canBuyAtThisTime() {
                         print("Showing Drop In")
                         showDropIn(clientTokenOrTokenizationKey: self.clientToken)
                     } else {
-                        let lastPurchaseTime = (Singleton.sharedInstance.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
+                        let lastPurchaseTime = (si.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
                         let day = lastPurchaseTime[...lastPurchaseTime.index(of: "y")!]
                         let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once per weekly cycle.", message: "Please wait until \(day) to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
+                        cantBuyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         self.present(cantBuyAlert, animated: true, completion: nil)
                     }
                 } else {
                     self.present(notFilledOut, animated: true, completion: nil)
                 }
-            } else if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+            } else if si.requestedBarTag == 7 || si.requestedBarTag == 8 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && quantityTF.text != "" {
-                    if Singleton.sharedInstance.requestedBarTag == 7 {
+                    if si.requestedBarTag == 7 {
                         self.price = 8.00 * Double(quantityTF.text!)!
-                    } else if Singleton.sharedInstance.requestedBarTag == 8 {
+                    } else if si.requestedBarTag == 8 {
                         self.price = 7.00 * Double(quantityTF.text!)!
                     }
                     showDropIn(clientTokenOrTokenizationKey: self.clientToken)
                 } else {
                     self.present(notFilledOut, animated: true, completion: nil)
                 }
-            } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+            } else if si.requestedBarTag == 9 || si.requestedBarTag == 10 {
                 if nameTF.text != "" && emailTF.text != "" && phoneTF.text != "" && heightTF.text != "" && weightTF.text != "" {
                     askIfUserIsNewOrOldCustomer()
                 } else {
@@ -252,37 +253,19 @@ class BarOrderScreen: UIViewController {
         }
     }
     func canBuyAtThisTime() -> Bool {
-        let lastPurchaseTime = Singleton.sharedInstance.lastBarPurchaseTime
+        let lastPurchaseTime = si.lastBarPurchaseTime
         if lastPurchaseTime == nil {
             return true
         }
-<<<<<<< Updated upstream
-        
-        let itsBeenMoreThanAweek = Date().timeIntervalSince(lastPurchaseTime as! Date) > 604800
-        let todayDesc = Date().description(with: Locale(identifier: "Day"))
-        let prevDesc = (lastPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
-        let sameDayOfWeek = todayDesc[...todayDesc.index(of: "y")!] == prevDesc[...prevDesc.index(of: "y")!]
-        let itsBeenMoreThanAday = Date().timeIntervalSince(lastPurchaseTime as! Date) > 86400
-
-        return itsBeenMoreThanAweek || (sameDayOfWeek && itsBeenMoreThanAday)
-=======
-        let calendar = NSCalendar(calendarIdentifier: .gregorian)
-        let now = calendar!.components([.day, .month, .weekOfMonth, .year], from: Date())
-        let before = calendar!.components([.day, .month, .weekOfMonth, .year], from: lastPurchaseTime as! Date)
-        // If today is Sunday, prevent them from buying bars altogether
-        if now.weekday == 1 {
-            return false
-        }
-        // If todays week of the month (1,2,3,4) is different from last purchases week of the month, let them buy. Purchasing on the first week of two different months would result in prevention of buying so I also check if the months are the same. Same goes for the same month of two different years, so I included that they're allowed to buy if the years are different
-        return now.weekOfMonth != before.weekOfMonth || now.month != before.month || now.year != before.year
->>>>>>> Stashed changes
+        return Date().timeIntervalSince(lastPurchaseTime as! Date) > 600000
     }
+    
     @objc func back() {
-        if Singleton.sharedInstance.requestedBarTag < 7 {
+        if si.requestedBarTag < 7 {
             performSegue(withIdentifier: "barOrderToBarSelect", sender: self)
-        } else if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+        } else if si.requestedBarTag == 7 || si.requestedBarTag == 8 {
             performSegue(withIdentifier: "orderScreenToMixes", sender: self)
-        } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+        } else if si.requestedBarTag == 9 || si.requestedBarTag == 10 {
             performSegue(withIdentifier: "orderScreenToPrograms", sender: self)
         }
         
@@ -311,13 +294,13 @@ extension BarOrderScreen: UITextFieldDelegate {
             phoneTF.becomeFirstResponder()
         }
         if textField == phoneTF {
-            if Singleton.sharedInstance.requestedBarTag < 7 {
+            if si.requestedBarTag < 7 {
                 phoneTF.resignFirstResponder()
             }
-            if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+            if si.requestedBarTag == 7 || si.requestedBarTag == 8 {
                 quantityTF.becomeFirstResponder()
             }
-            if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+            if si.requestedBarTag == 9 || si.requestedBarTag == 10 {
                 heightTF.becomeFirstResponder()
             }
         }
@@ -391,7 +374,7 @@ extension BarOrderScreen {
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
             if error == nil {
                 var messageAddon = ""
-                if Singleton.sharedInstance.requestedBarTag <= 8 {
+                if self.si.requestedBarTag <= 8 {
                     messageAddon = "Your package will be ready for pickup on Sunday."
                 } else {
                     messageAddon = "Your two-week program will be emailed to you within two business days."
@@ -400,12 +383,12 @@ extension BarOrderScreen {
                     let alert = UIAlertController(title: "Success!", message: "Thanks for purchasing \(String(describing: self.productTitle.text!)). \(messageAddon)", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                    if Singleton.sharedInstance.requestedBarTag < 7 {
-                        Singleton.sharedInstance.lastBarPurchaseTime = Date()
+                    if self.si.requestedBarTag < 7 {
+                        self.si.lastBarPurchaseTime = Date()
                         self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!, quantity: "")
-                    } else if Singleton.sharedInstance.requestedBarTag == 7 || Singleton.sharedInstance.requestedBarTag == 8 {
+                    } else if self.si.requestedBarTag == 7 || self.si.requestedBarTag == 8 {
                         self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: "", weight: "", packageOrdered: self.productTitle.text!, quantity: self.quantityTF.text!)
-                    } else if Singleton.sharedInstance.requestedBarTag == 9 || Singleton.sharedInstance.requestedBarTag == 10 {
+                    } else if self.si.requestedBarTag == 9 || self.si.requestedBarTag == 10 {
                         self.submitInfoToGoogleForm(name: self.nameTF.text!, email: self.emailTF.text!, phone: self.phoneTF.text!, height: self.heightTF.text!, weight: self.weightTF.text!, packageOrdered: self.productTitle.text!, quantity: "")
                     }
                 }
