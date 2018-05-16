@@ -92,6 +92,17 @@
                                     <constraint firstItem="oRD-i2-2xV" firstAttribute="height" secondItem="qOw-zg-XMP" secondAttribute="height" id="reH-c3-DOr"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obw-n5-hh5">
+                                <rect key="frame" x="330" y="35" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Msc-zE-947"/>
+                                    <constraint firstAttribute="width" constant="40" id="W1u-uv-c4s"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="CartIcon"/>
+                                <connections>
+                                    <segue destination="aER-QZ-7yr" kind="show" id="Nfn-it-ski"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -101,6 +112,8 @@
                             <constraint firstItem="Pai-VI-AL5" firstAttribute="leading" secondItem="qPP-5x-Lxt" secondAttribute="leading" id="ViU-fH-e3t"/>
                             <constraint firstAttribute="bottom" secondItem="Pai-VI-AL5" secondAttribute="bottom" id="huc-Cf-hi0"/>
                             <constraint firstItem="Pai-VI-AL5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="q12-rU-RR3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="obw-n5-hh5" secondAttribute="trailing" constant="5" id="qcY-6O-myg"/>
+                            <constraint firstItem="obw-n5-hh5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="rcg-1R-9zN"/>
                             <constraint firstAttribute="trailing" secondItem="Pai-VI-AL5" secondAttribute="trailing" id="x3b-FV-BLq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -269,6 +282,17 @@
                                     <segue destination="BYZ-38-t0r" kind="custom" identifier="homeSegue" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="bWw-HH-oKi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDc-Ts-dAa">
+                                <rect key="frame" x="330" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Kxp-Tb-gnS"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ufv-RJ-k5L"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="CartIcon"/>
+                                <connections>
+                                    <segue destination="aER-QZ-7yr" kind="show" id="hYK-wS-Mhm"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-nf-WKK" userLabel="Options">
                                 <rect key="frame" x="0.0" y="100" width="375" height="544"/>
                                 <subviews>
@@ -379,7 +403,9 @@
                             <constraint firstItem="5xR-wE-09q" firstAttribute="trailing" secondItem="gSY-nf-WKK" secondAttribute="trailing" id="aS3-ne-eOh"/>
                             <constraint firstItem="gSY-nf-WKK" firstAttribute="leading" secondItem="5xR-wE-09q" secondAttribute="leading" id="h9G-Hs-gOc"/>
                             <constraint firstItem="8uf-XQ-htD" firstAttribute="leading" secondItem="5xR-wE-09q" secondAttribute="leading" constant="16" id="msG-tA-pO6"/>
+                            <constraint firstItem="GDc-Ts-dAa" firstAttribute="top" secondItem="5xR-wE-09q" secondAttribute="top" constant="20" id="nV0-1x-305"/>
                             <constraint firstItem="5xR-wE-09q" firstAttribute="trailing" secondItem="7uj-je-LBM" secondAttribute="trailing" id="rZ5-u6-Qp7"/>
+                            <constraint firstItem="5xR-wE-09q" firstAttribute="trailing" secondItem="GDc-Ts-dAa" secondAttribute="trailing" constant="5" id="woZ-dw-kxg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5xR-wE-09q"/>
                     </view>
@@ -483,14 +509,27 @@
                                     <segue destination="BYZ-38-t0r" kind="custom" identifier="mixesToHome" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="jNI-Ui-1ha"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZI-RS-iR5">
+                                <rect key="frame" x="330" y="35" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="njP-MG-wPi"/>
+                                    <constraint firstAttribute="height" constant="40" id="tJk-rO-dJk"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="CartIcon"/>
+                                <connections>
+                                    <segue destination="aER-QZ-7yr" kind="show" id="0O5-61-Qjg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VrK-x5-1sH" firstAttribute="top" secondItem="gnW-5C-aSj" secondAttribute="top" id="4un-fx-T3W"/>
                             <constraint firstItem="XeK-ds-88d" firstAttribute="top" secondItem="VrK-x5-1sH" secondAttribute="bottom" id="DvD-y2-fbs"/>
                             <constraint firstItem="bfN-nP-9Sg" firstAttribute="top" secondItem="bH9-3j-TxM" secondAttribute="top" id="Nrf-Hq-0dp"/>
+                            <constraint firstItem="bH9-3j-TxM" firstAttribute="trailing" secondItem="0ZI-RS-iR5" secondAttribute="trailing" constant="5" id="Qzw-pZ-mee"/>
                             <constraint firstItem="bH9-3j-TxM" firstAttribute="trailing" secondItem="VrK-x5-1sH" secondAttribute="trailing" id="Zp7-0B-aAP"/>
                             <constraint firstAttribute="trailing" secondItem="XeK-ds-88d" secondAttribute="trailing" id="bb7-bw-6M7"/>
+                            <constraint firstItem="0ZI-RS-iR5" firstAttribute="top" secondItem="bH9-3j-TxM" secondAttribute="top" constant="15" id="hWD-ib-Ahd"/>
                             <constraint firstItem="XeK-ds-88d" firstAttribute="leading" secondItem="gnW-5C-aSj" secondAttribute="leading" id="sVZ-7e-V31"/>
                             <constraint firstItem="bfN-nP-9Sg" firstAttribute="leading" secondItem="bH9-3j-TxM" secondAttribute="leading" constant="16" id="scv-B9-KhQ"/>
                             <constraint firstItem="VrK-x5-1sH" firstAttribute="leading" secondItem="bH9-3j-TxM" secondAttribute="leading" id="sqe-VI-KbV"/>
@@ -542,19 +581,17 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="mTQ-de-9fg"/>
                                     <constraint firstAttribute="height" constant="100" id="vOM-ko-ulT"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="zU1-7d-jb0"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVy-V1-Vq7">
-                                <rect key="frame" x="157.5" y="617" width="60" height="35"/>
+                                <rect key="frame" x="137.5" y="617" width="100" height="35"/>
                                 <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Am9-M1-5ew"/>
+                                    <constraint firstAttribute="width" constant="100" id="Am9-M1-5ew"/>
                                     <constraint firstAttribute="height" constant="35" id="Dcz-Y8-y1s"/>
                                 </constraints>
-                                <state key="normal" title="Order">
+                                <state key="normal" title="Add to Cart">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -562,139 +599,6 @@
                                     <action selector="orderButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="hte-4T-ley"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pu6-ct-nkQ" userLabel="Form">
-                                <rect key="frame" x="30" y="497" width="315" height="100"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQk-3D-Aq6">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebv-JA-jQv">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5uD-TC-8hy">
-                                                <rect key="frame" x="55" y="0.0" width="260" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" textContentType="name"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="xgN-IN-lBZ"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-4i-fqk" userLabel="Email Stack View">
-                                        <rect key="frame" x="0.0" y="35" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EC-Qm-t1i">
-                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-Ka-jzU">
-                                                <rect key="frame" x="53.5" y="0.0" width="261.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="wNk-4L-cK3"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmL-xm-MJG" userLabel="Phone Stack View">
-                                        <rect key="frame" x="0.0" y="70" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBb-sg-YS7">
-                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skb-8h-2JF">
-                                                <rect key="frame" x="57.5" y="0.0" width="257.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" smartDashesType="yes" textContentType="tel"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="5Vd-yg-c19"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nQ-3X-xsY" userLabel="Height Stack View">
-                                        <rect key="frame" x="0.0" y="100" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-0r-yVR">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZMF-au-fiW">
-                                                <rect key="frame" x="61.5" y="0.0" width="253.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="xAq-Lc-b4K"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-Pb-Lil" userLabel="Weight Stack View">
-                                        <rect key="frame" x="0.0" y="100" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-AJ-2GW">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFG-5f-e8S">
-                                                <rect key="frame" x="64" y="0.0" width="251" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="postal-code"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="p6G-Ov-PBI"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ck-0w-4AZ" userLabel="Quantity Stack View">
-                                        <rect key="frame" x="0.0" y="100" width="315" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezg-lV-9Je">
-                                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBf-yj-Hfv">
-                                                <rect key="frame" x="77.5" y="0.0" width="237.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="hY0-ae-xXC" id="WIz-Yj-qg4"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="FKK-O3-XLP"/>
-                                    <constraint firstItem="JmL-xm-MJG" firstAttribute="height" secondItem="LQk-3D-Aq6" secondAttribute="height" id="Gp2-NE-l0D"/>
-                                    <constraint firstItem="sLU-Pb-Lil" firstAttribute="height" secondItem="LQk-3D-Aq6" secondAttribute="height" id="KWK-x6-Wyp"/>
-                                    <constraint firstItem="4nQ-3X-xsY" firstAttribute="height" secondItem="LQk-3D-Aq6" secondAttribute="height" id="Yyu-mZ-eSf"/>
-                                    <constraint firstItem="4ck-0w-4AZ" firstAttribute="height" secondItem="LQk-3D-Aq6" secondAttribute="height" id="ccT-sq-RgP"/>
-                                    <constraint firstItem="zVX-4i-fqk" firstAttribute="height" secondItem="LQk-3D-Aq6" secondAttribute="height" id="xdm-pR-7Oa"/>
-                                </constraints>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAH-5m-D1t">
                                 <rect key="frame" x="16" y="20" width="50" height="50"/>
                                 <constraints>
@@ -729,7 +633,7 @@
                                 </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhy-2p-zzR">
-                                <rect key="frame" x="16" y="300" width="343" height="182"/>
+                                <rect key="frame" x="16" y="300" width="343" height="302"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A14-hF-iqN">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="23.5"/>
@@ -757,7 +661,6 @@
                         <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1Np-yB-iJw" firstAttribute="trailing" secondItem="Fhy-2p-zzR" secondAttribute="trailing" constant="16" id="1mt-0c-3jb"/>
-                            <constraint firstItem="pu6-ct-nkQ" firstAttribute="top" secondItem="Fhy-2p-zzR" secondAttribute="bottom" constant="15" id="1rd-yA-TgI"/>
                             <constraint firstItem="1Np-yB-iJw" firstAttribute="trailing" secondItem="7K8-vv-gvi" secondAttribute="trailing" constant="16" id="39J-4i-TY3"/>
                             <constraint firstItem="Fhy-2p-zzR" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" constant="16" id="7Dk-SS-3Cd"/>
                             <constraint firstItem="7K8-vv-gvi" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" constant="16" id="GGo-mY-XHB"/>
@@ -766,14 +669,12 @@
                             <constraint firstItem="Fhy-2p-zzR" firstAttribute="top" secondItem="7K8-vv-gvi" secondAttribute="bottom" id="R82-hD-zCH"/>
                             <constraint firstItem="wAH-5m-D1t" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" constant="16" id="VK8-sJ-GBt"/>
                             <constraint firstItem="1Np-yB-iJw" firstAttribute="trailing" secondItem="0hP-XH-rlr" secondAttribute="trailing" id="WKj-v8-mse"/>
-                            <constraint firstItem="1Np-yB-iJw" firstAttribute="trailing" secondItem="pu6-ct-nkQ" secondAttribute="trailing" constant="30" id="WYe-SP-vPR"/>
                             <constraint firstItem="0hP-XH-rlr" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" id="ZEJ-Rw-spU"/>
+                            <constraint firstItem="xVy-V1-Vq7" firstAttribute="top" secondItem="Fhy-2p-zzR" secondAttribute="bottom" constant="15" id="dsm-uV-Yyf"/>
                             <constraint firstItem="1Np-yB-iJw" firstAttribute="trailing" secondItem="LMM-h3-VVk" secondAttribute="trailing" id="jPp-Bd-uBa"/>
                             <constraint firstItem="LMM-h3-VVk" firstAttribute="top" secondItem="0hP-XH-rlr" secondAttribute="bottom" id="k5G-Bl-rLL"/>
                             <constraint firstItem="LMM-h3-VVk" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" id="neN-rT-PZa"/>
                             <constraint firstItem="0hP-XH-rlr" firstAttribute="top" secondItem="lxb-HA-hE8" secondAttribute="top" id="p91-Xd-okf"/>
-                            <constraint firstItem="xVy-V1-Vq7" firstAttribute="top" secondItem="pu6-ct-nkQ" secondAttribute="bottom" constant="20" id="q9K-FZ-1qd"/>
-                            <constraint firstItem="pu6-ct-nkQ" firstAttribute="leading" secondItem="1Np-yB-iJw" secondAttribute="leading" constant="30" id="sFN-Uy-YQq"/>
                             <constraint firstItem="7K8-vv-gvi" firstAttribute="top" secondItem="0hP-XH-rlr" secondAttribute="bottom" id="sWY-Xb-Qu9"/>
                             <constraint firstItem="1Np-yB-iJw" firstAttribute="bottom" secondItem="xVy-V1-Vq7" secondAttribute="bottom" constant="15" id="wCe-1W-5ml"/>
                             <constraint firstItem="xVy-V1-Vq7" firstAttribute="centerX" secondItem="lxb-HA-hE8" secondAttribute="centerX" id="wrS-UA-6dQ"/>
@@ -782,26 +683,13 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="A14-hF-iqN" id="Fbr-BP-6vb"/>
-                        <outlet property="emailTF" destination="uvb-Ka-jzU" id="RRm-a8-Mvi"/>
-                        <outlet property="formContainer" destination="pu6-ct-nkQ" id="Zef-QH-rna"/>
-                        <outlet property="formContainerHeight" destination="FKK-O3-XLP" id="iZO-EH-SWk"/>
-                        <outlet property="heightStackView" destination="4nQ-3X-xsY" id="I17-Zp-emu"/>
-                        <outlet property="heightTF" destination="ZMF-au-fiW" id="iyr-8T-7uQ"/>
-                        <outlet property="nameLabel" destination="Ebv-JA-jQv" id="lCo-cC-vI7"/>
-                        <outlet property="nameStackView" destination="LQk-3D-Aq6" id="sns-92-DfR"/>
-                        <outlet property="nameTF" destination="5uD-TC-8hy" id="wgi-bU-lQl"/>
                         <outlet property="orderButton" destination="xVy-V1-Vq7" id="EWg-3W-wRv"/>
                         <outlet property="orderButtonWidth" destination="Am9-M1-5ew" id="8on-ny-YKb"/>
                         <outlet property="orderbuttonHeight" destination="Dcz-Y8-y1s" id="DcD-dE-PcS"/>
-                        <outlet property="phoneTF" destination="skb-8h-2JF" id="5D1-gh-I4j"/>
                         <outlet property="productImageView" destination="KD6-xA-kK2" id="RCv-kw-8Sz"/>
                         <outlet property="productTitle" destination="cRz-c5-Aeu" id="ue8-a6-mNh"/>
-                        <outlet property="quantityStackView" destination="4ck-0w-4AZ" id="rht-eu-krh"/>
-                        <outlet property="quantityTF" destination="oBf-yj-Hfv" id="1tn-cq-0pp"/>
                         <outlet property="scrollView" destination="Fhy-2p-zzR" id="ihv-Cy-rFf"/>
                         <outlet property="webView" destination="LMM-h3-VVk" id="s8e-7h-9o0"/>
-                        <outlet property="weightStackView" destination="sLU-Pb-Lil" id="XfU-oP-tIs"/>
-                        <outlet property="weightTF" destination="DFG-5f-e8S" id="S29-cb-W84"/>
                         <segue destination="9dm-6c-HSO" kind="custom" identifier="barOrderToBarSelect" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="fBb-Sn-MKN"/>
                         <segue destination="AtH-yV-Ut7" kind="custom" identifier="orderScreenToMixes" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="Xfx-AF-G0X"/>
                         <segue destination="85d-S9-VGT" kind="custom" identifier="orderScreenToPrograms" customClass="SegueFromRight" customModule="FlavorfulFIT" customModuleProvider="target" id="C5i-AT-JnT"/>
@@ -818,13 +706,208 @@
                     <view key="view" contentMode="scaleToFill" id="vt5-ZN-YJu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fyg-2f-16m" userLabel="HUD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nI0-EV-r9G">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavorful FIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-f3-MrI">
+                                        <rect key="frame" x="0.0" y="32" width="375" height="43"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="37"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Checkout -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-5L-iYI">
+                                        <rect key="frame" x="0.0" y="75" width="375" height="25"/>
+                                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="gKC-vC-sT7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="S8l-2a-lpb"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-el-XCx" userLabel="Form">
+                                <rect key="frame" x="15" y="482" width="345" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzf-VD-nsY">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5r-TT-67N">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-fI-Trv">
+                                                <rect key="frame" x="55" y="0.0" width="290" height="16"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" textContentType="name"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="aER-QZ-7yr" id="oRB-P6-3Mh"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hm2-dN-Lgw" userLabel="Email Stack View">
+                                        <rect key="frame" x="0.0" y="21" width="345" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwO-8K-WnD">
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HZD-91-LMj">
+                                                <rect key="frame" x="53.5" y="0.0" width="291.5" height="16"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" textContentType="email"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="aER-QZ-7yr" id="Z6p-BQ-3pq"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apd-TX-qIB" userLabel="Phone Stack View">
+                                        <rect key="frame" x="0.0" y="42" width="345" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-Q9-2mo">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bu-Yq-Atf">
+                                                <rect key="frame" x="57.5" y="0.0" width="287.5" height="16"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" smartDashesType="yes" textContentType="tel"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="aER-QZ-7yr" id="1Nz-MQ-xyZ"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ha7-Z5-Ahm" userLabel="Height Stack View">
+                                        <rect key="frame" x="0.0" y="63" width="345" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOE-fe-kJ2">
+                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHF-aQ-TGl">
+                                                <rect key="frame" x="61.5" y="0.0" width="283.5" height="16"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="aER-QZ-7yr" id="SQc-t6-TNu"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sxy-2n-TCX" userLabel="Weight Stack View">
+                                        <rect key="frame" x="0.0" y="84" width="345" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lP-WN-2fn">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-Jm-xZr">
+                                                <rect key="frame" x="64" y="0.0" width="281" height="16"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="postal-code"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="aER-QZ-7yr" id="7Zf-uY-Ubl"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ha7-Z5-Ahm" firstAttribute="height" secondItem="Zzf-VD-nsY" secondAttribute="height" id="Os7-IX-GaW"/>
+                                    <constraint firstItem="hm2-dN-Lgw" firstAttribute="height" secondItem="Zzf-VD-nsY" secondAttribute="height" id="anz-Xi-gGQ"/>
+                                    <constraint firstItem="Apd-TX-qIB" firstAttribute="height" secondItem="Zzf-VD-nsY" secondAttribute="height" id="k6D-nZ-0cx"/>
+                                    <constraint firstItem="Sxy-2n-TCX" firstAttribute="height" secondItem="Zzf-VD-nsY" secondAttribute="height" id="xct-Xg-zth"/>
+                                    <constraint firstAttribute="height" constant="100" id="xo4-EU-lpi"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-1r-gfS">
+                                <rect key="frame" x="137.5" y="597" width="100" height="35"/>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BYa-oB-Jfa"/>
+                                    <constraint firstAttribute="width" constant="100" id="S53-4J-RIZ"/>
+                                </constraints>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkout:" destination="aER-QZ-7yr" eventType="touchUpInside" id="seQ-Mf-PWV"/>
+                                    <action selector="orderButtonPressed:" destination="hY0-ae-xXC" eventType="touchUpInside" id="FKD-7Z-Hmg"/>
+                                </connections>
+                            </button>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="top" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IzZ-IZ-2tP" userLabel="Cart">
+                                <rect key="frame" x="15" y="100" width="345" height="367"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total: $28.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZJ-Sq-aA3">
+                                <rect key="frame" x="16" y="604" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.66718930006027222" green="0.83042877912521362" blue="0.15920111536979675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IzZ-IZ-2tP" firstAttribute="leading" secondItem="vYo-9g-ngV" secondAttribute="leading" constant="15" id="2eS-Xu-Qvn"/>
+                            <constraint firstItem="XA7-el-XCx" firstAttribute="leading" secondItem="vYo-9g-ngV" secondAttribute="leading" constant="15" id="3qx-rf-sj7"/>
+                            <constraint firstItem="vYo-9g-ngV" firstAttribute="trailing" secondItem="IzZ-IZ-2tP" secondAttribute="trailing" constant="15" id="E1B-H3-Gh1"/>
+                            <constraint firstItem="vYo-9g-ngV" firstAttribute="trailing" secondItem="XA7-el-XCx" secondAttribute="trailing" constant="15" id="JmX-Bu-dxF"/>
+                            <constraint firstItem="Fyg-2f-16m" firstAttribute="leading" secondItem="vYo-9g-ngV" secondAttribute="leading" id="N3c-HS-GU0"/>
+                            <constraint firstItem="wFc-1r-gfS" firstAttribute="centerX" secondItem="vt5-ZN-YJu" secondAttribute="centerX" id="aDg-lu-8hG"/>
+                            <constraint firstItem="IzZ-IZ-2tP" firstAttribute="top" secondItem="Fyg-2f-16m" secondAttribute="bottom" id="aqM-W5-ivk"/>
+                            <constraint firstItem="Fyg-2f-16m" firstAttribute="top" secondItem="vt5-ZN-YJu" secondAttribute="top" id="fCg-xj-d8B"/>
+                            <constraint firstItem="XA7-el-XCx" firstAttribute="top" secondItem="IzZ-IZ-2tP" secondAttribute="bottom" constant="15" id="rK3-ji-1On"/>
+                            <constraint firstItem="vYo-9g-ngV" firstAttribute="trailing" secondItem="Fyg-2f-16m" secondAttribute="trailing" id="tHN-kj-fM6"/>
+                            <constraint firstItem="wFc-1r-gfS" firstAttribute="top" secondItem="XA7-el-XCx" secondAttribute="bottom" constant="15" id="w2b-r0-RZ1"/>
+                            <constraint firstItem="vYo-9g-ngV" firstAttribute="bottom" secondItem="wFc-1r-gfS" secondAttribute="bottom" constant="35" id="zCi-lH-ZKU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vYo-9g-ngV"/>
                     </view>
+                    <connections>
+                        <outlet property="cartStackView" destination="IzZ-IZ-2tP" id="fxu-io-doc"/>
+                        <outlet property="emailTF" destination="HZD-91-LMj" id="2pr-mg-Dan"/>
+                        <outlet property="heightTF" destination="tHF-aQ-TGl" id="vqq-gx-goB"/>
+                        <outlet property="nameTF" destination="fH9-fI-Trv" id="NlQ-DW-SSS"/>
+                        <outlet property="phoneTF" destination="7bu-Yq-Atf" id="UWc-61-Bhg"/>
+                        <outlet property="totalLabel" destination="5ZJ-Sq-aA3" id="3QE-Mp-Qgu"/>
+                        <outlet property="weightTF" destination="SOD-Jm-xZr" id="Txj-do-HPt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAY-3A-X0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3312" y="133"/>
+            <point key="canvasLocation" x="1278" y="902"/>
         </scene>
     </scenes>
     <resources>
@@ -832,6 +915,7 @@
         <image name="AssortedVanilla" width="5184" height="3456"/>
         <image name="BarsImg" width="4841" height="3227"/>
         <image name="BerriesnCream" width="3599" height="3456"/>
+        <image name="CartIcon" width="512" height="512"/>
         <image name="ChocoBrownie" width="3336" height="3444"/>
         <image name="ChocoPeanut" width="3623" height="3456"/>
         <image name="CoconutMarzipan" width="3981" height="3388"/>
@@ -843,10 +927,11 @@
         <image name="WomensProgramImg" width="870" height="580"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e7C-nv-6jI"/>
-        <segue reference="Xfx-AF-G0X"/>
-        <segue reference="fBb-Sn-MKN"/>
-        <segue reference="C5i-AT-JnT"/>
-        <segue reference="bWw-HH-oKi"/>
+        <segue reference="0O5-61-Qjg"/>
+        <segue reference="48Z-t4-IXG"/>
+        <segue reference="gIx-US-tLH"/>
+        <segue reference="EWS-HB-pjW"/>
+        <segue reference="mUS-Aa-JV4"/>
+        <segue reference="jNI-Ui-1ha"/>
     </inferredMetricsTieBreakers>
 </document>
