@@ -10,19 +10,6 @@ import UIKit
 
 class CartScreen: UIViewController {
     
-//    @IBOutlet weak var nameTF: UITextField!
-//    @IBOutlet weak var emailTF: UITextField!
-//    @IBOutlet weak var phoneTF: UITextField!
-//    @IBOutlet weak var heightTF: UITextField!
-//    @IBOutlet weak var weightTF: UITextField!
-//    var textFields: [UITextField] = []
-//
-//    @IBOutlet weak var heightStackView: UIStackView!
-//    @IBOutlet weak var weightStackView: UIStackView!
-//    @IBOutlet weak var formContainer: UIStackView!
-//    @IBOutlet weak var formContainerHeight: NSLayoutConstraint!
-//
-//    @IBOutlet weak var cartStackView: UIStackView!
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
@@ -31,24 +18,94 @@ class CartScreen: UIViewController {
     @IBOutlet weak var weightTF: UITextField!
     var textFields: [UITextField] = []
     
-    @IBOutlet weak var cartStackView: UIStackView!
-    
     var total: Double = 0.0
     @IBOutlet weak var totalLabel: UILabel!
     
     let si = Singleton.sharedInstance
     
+    
+    
+    @IBOutlet weak var firstCartItem: UIView!
+    @IBOutlet weak var firstCartImage: UIImageView!
+    @IBOutlet weak var firstCartTitle: UILabel!
+    @IBOutlet weak var firstCartDesc: UILabel!
+    @IBOutlet weak var firstCartQuantity: UILabel!
+    @IBOutlet weak var firstCartPrice: UILabel!
+    
+    
+    @IBOutlet weak var secondCartItem: UIView!
+    @IBOutlet weak var secondCartImage: UIImageView!
+    @IBOutlet weak var secondCartTitle: UILabel!
+    @IBOutlet weak var secondCartDesc: UILabel!
+    @IBOutlet weak var secondCartQuantity: UILabel!
+    @IBOutlet weak var secondCartPrice: UILabel!
+    
+    @IBOutlet weak var thirdCartItem: UIView!
+    @IBOutlet weak var thirdCartImage: UIImageView!
+    @IBOutlet weak var thirdCartTitle: UILabel!
+    @IBOutlet weak var thirdCartDesc: UILabel!
+    @IBOutlet weak var thirdCartQuantity: UILabel!
+    @IBOutlet weak var thirdCartPrice: UILabel!
+    
+    @IBOutlet weak var fourthCartItem: UIView!
+    @IBOutlet weak var fourthCartImage: UIImageView!
+    @IBOutlet weak var fourthCartTitle: UILabel!
+    @IBOutlet weak var fourthCartDesc: UILabel!
+    @IBOutlet weak var fourthCartQuantity: UILabel!
+    @IBOutlet weak var fourthCartPrice: UILabel!
+    
+    var cartItemViews: [UIView] = []
+    var cartItemImages: [UIImageView] = []
+    var cartItemTitles:[UILabel] = []
+    var cartItemDescs: [UILabel] = []
+    var cartItemQuantities: [UILabel] = []
+    var cartItemPrices: [UILabel] = []
+    
+    
+    @IBAction func addQuantity(_ sender: UIButton) {
+        let product = si.productsInCart[sender.tag - 1]
+        let quantityLabels = [firstCartQuantity, secondCartQuantity, thirdCartQuantity, fourthCartQuantity]
+        product.quantity += 1
+        quantityLabels[sender.tag - 1]?.text = String(product.quantity)
+    }
+    
+    @IBAction func decrimentQuantity(_ sender: UIButton) {
+        let product = si.productsInCart[sender.tag - 1]
+        let quantityLabels = [firstCartQuantity, secondCartQuantity, thirdCartQuantity, fourthCartQuantity]
+        func handleRemove(action: UIAlertAction) {
+            si.productsInCart.remove(at: sender.tag - 1)
+            self.cartItemViews[sender.tag - 1].isHidden = true
+        }
+        let removeAlert = UIAlertController(title: "Remove \(product.title)>", message: "You are about to remove \(product.title) from your cart.\nAre you sure?", preferredStyle: UIAlertControllerStyle.alert)
+        removeAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: handleRemove))
+        removeAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        if product.quantity == 1 {
+            self.present(removeAlert, animated: true, completion: nil)
+        } else {
+            product.quantity -= 1
+            quantityLabels[sender.tag - 1]?.text = String(product.quantity)
+        }
+    }
+    
     override func viewDidLoad() {
         self.textFields = [self.nameTF, self.emailTF, self.phoneTF, self.heightTF, self.weightTF]
-        let products = Singleton.sharedInstance.productsInCart
-        var count = 0
-        for product in products {
-            let cartItemView = CartItem(frame: CGRect(x: 0, y: count * 100, width: 300, height: 100), product: product)
-            self.cartStackView.addSubview(cartItemView)
-            NSLayoutConstraint(item: cartItemView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: cartStackView, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0).isActive = true
-            cartItemView.addContraints()
-            count += 1
-            self.total += product.price * Double(product.quantity)
+        self.cartItemViews = [self.firstCartItem, self.secondCartItem, self.thirdCartItem, self.fourthCartItem]
+        self.cartItemImages = [self.firstCartImage, self.secondCartImage, self.thirdCartImage, self.fourthCartImage]
+        self.cartItemTitles = [self.firstCartTitle, self.secondCartTitle, self.thirdCartTitle, self.fourthCartTitle]
+        self.cartItemDescs = [self.firstCartDesc, self.secondCartDesc, self.thirdCartDesc, self.fourthCartDesc]
+        self.cartItemQuantities = [self.firstCartQuantity, self.secondCartQuantity, self.thirdCartQuantity, self.fourthCartQuantity]
+        self.cartItemPrices = [self.firstCartPrice, self.secondCartPrice, self.thirdCartPrice, self.fourthCartPrice]
+        
+        var productIndex = 0
+        for product in si.productsInCart {
+            cartItemViews[productIndex].isHidden = false
+            cartItemImages[productIndex].image = product.image
+            cartItemTitles[productIndex].text = product.title
+            cartItemDescs[productIndex].text = product.desc
+            cartItemQuantities[productIndex].text = String(product.quantity)
+            cartItemPrices[productIndex].text = "$\(product.price)0"
+            productIndex += 1
         }
         self.totalLabel.text = "$" + String(self.total) + "0"
         
@@ -74,9 +131,9 @@ class CartScreen: UIViewController {
                 textfield.resignFirstResponder()
             }
         }
-        for touch in touches {
-            print(touch.location(in: self.cartStackView.subviews[0]))
-        }
+//        for touch in touches {
+//            print(touch.location(in: self.cartStackView.subviews[0]))
+//        }
     }
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
@@ -112,8 +169,8 @@ class CartItem: UIView {
     let descriptionLabel = UILabel(frame: CGRect(x: 100, y: 45, width: 200, height: 45))
     let quantityLabel = UILabel(frame: CGRect(x: 0, y: 15, width: 80, height: 15))
     let quantityToggleView = UIStackView(frame: CGRect(x: 310, y: 45, width: 80, height: 45))
-    let incrimentQuantityButton = UIButton(type: UIButtonType.roundedRect)
-    let decrimentQuantityButton = UIButton(type: UIButtonType.roundedRect)
+    let incrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 15))
+    let decrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 30, width: 80, height: 15))
     
     @objc func incrimentQuantity() {
         product.quantity += 1
@@ -131,6 +188,10 @@ class CartItem: UIView {
         super.init(frame: frame)
         self.isUserInteractionEnabled = false
         quantityLabel.text = String(product.quantity)
+        
+        incrimentQuantityButton.backgroundColor = UIColor.black
+        decrimentQuantityButton.backgroundColor = UIColor.black
+        
         
         self.imageView.image = product.image
         self.addSubview(imageView)
