@@ -74,7 +74,7 @@ class CartScreen: UIViewController {
         let quantityLabels = [firstCartQuantity, secondCartQuantity, thirdCartQuantity, fourthCartQuantity]
         func handleRemove(action: UIAlertAction) {
             si.productsInCart.remove(at: sender.tag - 1)
-            self.cartItemViews[sender.tag - 1].isHidden = true
+            self.updateCartItems()
         }
         let removeAlert = UIAlertController(title: "Remove \(product.title)>", message: "You are about to remove \(product.title) from your cart.\nAre you sure?", preferredStyle: UIAlertControllerStyle.alert)
         removeAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: handleRemove))
@@ -96,17 +96,7 @@ class CartScreen: UIViewController {
         self.cartItemDescs = [self.firstCartDesc, self.secondCartDesc, self.thirdCartDesc, self.fourthCartDesc]
         self.cartItemQuantities = [self.firstCartQuantity, self.secondCartQuantity, self.thirdCartQuantity, self.fourthCartQuantity]
         self.cartItemPrices = [self.firstCartPrice, self.secondCartPrice, self.thirdCartPrice, self.fourthCartPrice]
-        
-        var productIndex = 0
-        for product in si.productsInCart {
-            cartItemViews[productIndex].isHidden = false
-            cartItemImages[productIndex].image = product.image
-            cartItemTitles[productIndex].text = product.title
-            cartItemDescs[productIndex].text = product.desc
-            cartItemQuantities[productIndex].text = String(product.quantity)
-            cartItemPrices[productIndex].text = "$\(product.price)0"
-            productIndex += 1
-        }
+        self.updateCartItems()
         self.totalLabel.text = "$" + String(self.total) + "0"
         
         NotificationCenter.default.addObserver(
@@ -124,7 +114,21 @@ class CartScreen: UIViewController {
         
     }
     
-    
+    func updateCartItems() {
+        for cartItemView in self.cartItemViews {
+            cartItemView.isHidden = true
+        }
+        var productIndex = 0
+        for product in si.productsInCart {
+            cartItemViews[productIndex].isHidden = false
+            cartItemImages[productIndex].image = product.image
+            cartItemTitles[productIndex].text = product.title
+            cartItemDescs[productIndex].text = product.desc
+            cartItemQuantities[productIndex].text = String(product.quantity)
+            cartItemPrices[productIndex].text = "$\(product.price)0"
+            productIndex += 1
+        }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for textfield in self.textFields {
             if textfield.isFirstResponder {
