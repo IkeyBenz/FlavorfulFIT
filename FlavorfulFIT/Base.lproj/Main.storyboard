@@ -874,7 +874,7 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cey-b2-WD5" userLabel="CartScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cey-b2-WD5" userLabel="CartScrollView">
                                 <rect key="frame" x="0.0" y="100" width="375" height="483"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITS-Kd-8zO" userLabel="FirstCartItem">
@@ -1356,9 +1356,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="0O5-61-Qjg"/>
         <segue reference="48Z-t4-IXG"/>
-        <segue reference="gIx-US-tLH"/>
-        <segue reference="EWS-HB-pjW"/>
-        <segue reference="mUS-Aa-JV4"/>
+        <segue reference="Xfx-AF-G0X"/>
+        <segue reference="fBb-Sn-MKN"/>
+        <segue reference="C5i-AT-JnT"/>
         <segue reference="jNI-Ui-1ha"/>
     </inferredMetricsTieBreakers>
 </document>

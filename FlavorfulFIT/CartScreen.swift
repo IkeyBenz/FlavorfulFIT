@@ -18,12 +18,14 @@ class CartScreen: UIViewController {
     @IBOutlet weak var weightTF: UITextField!
     var textFields: [UITextField] = []
     
-    var total: Double = 0.0
+    var total: Int = 0 {
+        didSet {
+            self.totalLabel.text = "$\(total).00"
+        }
+    }
     @IBOutlet weak var totalLabel: UILabel!
     
     let si = Singleton.sharedInstance
-    
-    
     
     @IBOutlet weak var firstCartItem: UIView!
     @IBOutlet weak var firstCartImage: UIImageView!
@@ -61,22 +63,32 @@ class CartScreen: UIViewController {
     var cartItemQuantities: [UILabel] = []
     var cartItemPrices: [UILabel] = []
     
-    
+    func updateTotal() {
+        var currentTotal = 0
+        for product in si.productsInCart {
+            currentTotal += Int(product.price) * product.quantity
+        }
+        self.total = currentTotal
+    }
     @IBAction func addQuantity(_ sender: UIButton) {
         let product = si.productsInCart[sender.tag - 1]
         let quantityLabels = [firstCartQuantity, secondCartQuantity, thirdCartQuantity, fourthCartQuantity]
+        let prices = [firstCartPrice, secondCartPrice, thirdCartPrice, fourthCartPrice]
         product.quantity += 1
+        prices[sender.tag - 1]?.text = "$\(Int(product.price) * product.quantity).00"
         quantityLabels[sender.tag - 1]?.text = String(product.quantity)
+        updateTotal()
     }
     
     @IBAction func decrimentQuantity(_ sender: UIButton) {
         let product = si.productsInCart[sender.tag - 1]
         let quantityLabels = [firstCartQuantity, secondCartQuantity, thirdCartQuantity, fourthCartQuantity]
+        let prices = [firstCartPrice, secondCartPrice, thirdCartPrice, fourthCartPrice]
         func handleRemove(action: UIAlertAction) {
             si.productsInCart.remove(at: sender.tag - 1)
             self.updateCartItems()
         }
-        let removeAlert = UIAlertController(title: "Remove \(product.title)>", message: "You are about to remove \(product.title) from your cart.\nAre you sure?", preferredStyle: UIAlertControllerStyle.alert)
+        let removeAlert = UIAlertController(title: "Remove \(product.title)", message: "You are about to remove \(product.title) from your cart.\nAre you sure?", preferredStyle: UIAlertControllerStyle.alert)
         removeAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: handleRemove))
         removeAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
@@ -85,7 +97,9 @@ class CartScreen: UIViewController {
         } else {
             product.quantity -= 1
             quantityLabels[sender.tag - 1]?.text = String(product.quantity)
+            prices[sender.tag - 1]?.text = "$\(Int(product.price) * product.quantity).00"
         }
+        updateTotal()
     }
     
     override func viewDidLoad() {
@@ -97,7 +111,6 @@ class CartScreen: UIViewController {
         self.cartItemQuantities = [self.firstCartQuantity, self.secondCartQuantity, self.thirdCartQuantity, self.fourthCartQuantity]
         self.cartItemPrices = [self.firstCartPrice, self.secondCartPrice, self.thirdCartPrice, self.fourthCartPrice]
         self.updateCartItems()
-        self.totalLabel.text = "$" + String(self.total) + "0"
         
         NotificationCenter.default.addObserver(
             self,
@@ -115,6 +128,7 @@ class CartScreen: UIViewController {
     }
     
     func updateCartItems() {
+        self.total = 0
         for cartItemView in self.cartItemViews {
             cartItemView.isHidden = true
         }
@@ -125,8 +139,9 @@ class CartScreen: UIViewController {
             cartItemTitles[productIndex].text = product.title
             cartItemDescs[productIndex].text = product.desc
             cartItemQuantities[productIndex].text = String(product.quantity)
-            cartItemPrices[productIndex].text = "$\(product.price)0"
+            cartItemPrices[productIndex].text = "$\(Int(product.price) * product.quantity).00"
             productIndex += 1
+            self.total += Int(product.price) * product.quantity
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -166,107 +181,107 @@ class CartScreen: UIViewController {
     }
     
 }
-class CartItem: UIView {
-    var product: Product
-    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 80, height: 80))
-    let titleLabel = UILabel(frame: CGRect(x: 100, y: 10, width: 200, height: 25))
-    let descriptionLabel = UILabel(frame: CGRect(x: 100, y: 45, width: 200, height: 45))
-    let quantityLabel = UILabel(frame: CGRect(x: 0, y: 15, width: 80, height: 15))
-    let quantityToggleView = UIStackView(frame: CGRect(x: 310, y: 45, width: 80, height: 45))
-    let incrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 15))
-    let decrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 30, width: 80, height: 15))
-    
-    @objc func incrimentQuantity() {
-        product.quantity += 1
-        print("yes")
-        quantityLabel.text = String(product.quantity)
-    }
-    @objc func decrimentQuantity() {
-        print("no")
-        product.quantity -= 1
-        quantityLabel.text = String(product.quantity)
-    }
-    
-    init(frame: CGRect, product: Product) {
-        self.product = product
-        super.init(frame: frame)
-        self.isUserInteractionEnabled = false
-        quantityLabel.text = String(product.quantity)
-        
-        incrimentQuantityButton.backgroundColor = UIColor.black
-        decrimentQuantityButton.backgroundColor = UIColor.black
-        
-        
-        self.imageView.image = product.image
-        self.addSubview(imageView)
-        
-        titleLabel.text = product.title
-        self.addSubview(titleLabel)
-        
-        descriptionLabel.text = product.desc
-        descriptionLabel.numberOfLines = 0
-        self.addSubview(descriptionLabel)
-        
-        let priceLabel = UILabel(frame: CGRect(x: 310, y: 10, width: 80, height: 25))
-        priceLabel.text = "$" + String(product.price) + "0"
-        self.addSubview(priceLabel)
-        
-        if product.canChangeQuantity {
-            incrimentQuantityButton.isUserInteractionEnabled = true
-            incrimentQuantityButton.addTarget(quantityToggleView, action: #selector(incrimentQuantity), for: UIControlEvents.touchUpInside)
-            print(incrimentQuantityButton.frame.origin)
-            incrimentQuantityButton.backgroundColor = UIColor.black
-            incrimentQuantityButton.setTitle("+", for: UIControlState.normal)
-            decrimentQuantityButton.addTarget(quantityToggleView, action: #selector(decrimentQuantity), for: UIControlEvents.touchUpInside)
-            decrimentQuantityButton.setTitle("-", for: UIControlState.normal)
-            decrimentQuantityButton.backgroundColor = UIColor.black
-            quantityToggleView.addSubview(incrimentQuantityButton)
-            quantityToggleView.addSubview(quantityLabel)
-            quantityToggleView.addSubview(decrimentQuantityButton)
-            quantityToggleView.bringSubview(toFront: incrimentQuantityButton)
-            quantityToggleView.bringSubview(toFront: decrimentQuantityButton)
-            
-            self.addSubview(quantityToggleView)
-            self.bringSubview(toFront: quantityToggleView)
-        }
-        
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    func addContraints() {
-        // Image contraints
-        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 10).isActive = true
-        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
-        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
-        
-        // Constraits for titleLabel
-        NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
-        NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-        
-        // Constraints for descriptionLabel
-        NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-        NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: titleLabel, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
-        
-        if product.canChangeQuantity {
-            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
-            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
-            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
-            NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: quantityToggleView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-            NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: quantityToggleView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-            
-            // Constraints for buttons
-            NSLayoutConstraint(item: incrimentQuantityButton, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
-            NSLayoutConstraint(item: incrimentQuantityButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 15).isActive = true
-            
-            
-        } else {
-            NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-            NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
-        }
-    }
-}
+//class CartItem: UIView {
+//    var product: Product
+//    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 80, height: 80))
+//    let titleLabel = UILabel(frame: CGRect(x: 100, y: 10, width: 200, height: 25))
+//    let descriptionLabel = UILabel(frame: CGRect(x: 100, y: 45, width: 200, height: 45))
+//    let quantityLabel = UILabel(frame: CGRect(x: 0, y: 15, width: 80, height: 15))
+//    let quantityToggleView = UIStackView(frame: CGRect(x: 310, y: 45, width: 80, height: 45))
+//    let incrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 15))
+//    let decrimentQuantityButton = UIButton(frame: CGRect(x: 0, y: 30, width: 80, height: 15))
+//
+//    @objc func incrimentQuantity() {
+//        product.quantity += 1
+//        print("yes")
+//        quantityLabel.text = String(product.quantity)
+//    }
+//    @objc func decrimentQuantity() {
+//        print("no")
+//        product.quantity -= 1
+//        quantityLabel.text = String(product.quantity)
+//    }
+//
+//    init(frame: CGRect, product: Product) {
+//        self.product = product
+//        super.init(frame: frame)
+//        self.isUserInteractionEnabled = false
+//        quantityLabel.text = String(product.quantity)
+//
+//        incrimentQuantityButton.backgroundColor = UIColor.black
+//        decrimentQuantityButton.backgroundColor = UIColor.black
+//
+//
+//        self.imageView.image = product.image
+//        self.addSubview(imageView)
+//
+//        titleLabel.text = product.title
+//        self.addSubview(titleLabel)
+//
+//        descriptionLabel.text = product.desc
+//        descriptionLabel.numberOfLines = 0
+//        self.addSubview(descriptionLabel)
+//
+//        let priceLabel = UILabel(frame: CGRect(x: 310, y: 10, width: 80, height: 25))
+//        priceLabel.text = "$" + String(product.price) + ".00"
+//        self.addSubview(priceLabel)
+//
+//        if product.canChangeQuantity {
+//            incrimentQuantityButton.isUserInteractionEnabled = true
+//            incrimentQuantityButton.addTarget(quantityToggleView, action: #selector(incrimentQuantity), for: UIControlEvents.touchUpInside)
+//            print(incrimentQuantityButton.frame.origin)
+//            incrimentQuantityButton.backgroundColor = UIColor.black
+//            incrimentQuantityButton.setTitle("+", for: UIControlState.normal)
+//            decrimentQuantityButton.addTarget(quantityToggleView, action: #selector(decrimentQuantity), for: UIControlEvents.touchUpInside)
+//            decrimentQuantityButton.setTitle("-", for: UIControlState.normal)
+//            decrimentQuantityButton.backgroundColor = UIColor.black
+//            quantityToggleView.addSubview(incrimentQuantityButton)
+//            quantityToggleView.addSubview(quantityLabel)
+//            quantityToggleView.addSubview(decrimentQuantityButton)
+//            quantityToggleView.bringSubview(toFront: incrimentQuantityButton)
+//            quantityToggleView.bringSubview(toFront: decrimentQuantityButton)
+//
+//            self.addSubview(quantityToggleView)
+//            self.bringSubview(toFront: quantityToggleView)
+//        }
+//
+//    }
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    func addContraints() {
+//        // Image contraints
+//        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 10).isActive = true
+//        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
+//        NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
+//
+//        // Constraits for titleLabel
+//        NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
+//        NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//
+//        // Constraints for descriptionLabel
+//        NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: imageView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//        NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: titleLabel, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
+//
+//        if product.canChangeQuantity {
+//            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
+//            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
+//            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//            NSLayoutConstraint(item: quantityToggleView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 10).isActive = true
+//            NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: quantityToggleView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//            NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: quantityToggleView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//
+//            // Constraints for buttons
+//            NSLayoutConstraint(item: incrimentQuantityButton, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 80).isActive = true
+//            NSLayoutConstraint(item: incrimentQuantityButton, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 15).isActive = true
+//
+//
+//        } else {
+//            NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//            NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 10).isActive = true
+//        }
+//    }
+//}
 class Product {
     var title: String
     var desc: String

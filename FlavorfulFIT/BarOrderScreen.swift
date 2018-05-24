@@ -48,14 +48,6 @@ class BarOrderScreen: UIViewController {
         
         productImageView.contentScaleFactor = CGFloat(UIViewContentMode.scaleAspectFit.rawValue)
         let tag = si.requestedBarTag!
-        // Hide order button if they're looking at a bar and there's already a bar in the cart
-        if tag < 7 {
-            for product in si.productsInCart {
-                if product.productTag < 7 {
-                    self.orderButton.isHidden = true
-                }
-            }
-        }
         
         var title = ""
         switch tag {
@@ -127,7 +119,7 @@ class BarOrderScreen: UIViewController {
                 descriptionLabel.text = "A healthy, clean, and vegan alternative to Duncan Hines or Betty Crocker mix. Just add a couple of wet ingredients, and bake as a loaf or muffins. Get the fix your sweet tooth craves the FlavorfulFIT way. Perfect for adults and kids!\nCertified Kosher Parve.\n- $7.00"
                 shortDescription = "Healthy alternative to Duncan Hines or Betty Crocker mix"
                 price = 7.00
-                productImageView.image = UIImage(named: "CrumbsCover")
+                productImageView.image = UIImage(named: "FlavorfulFIX")
             break
             case 9:
                 title = "Men's Two Week NoPrep"
@@ -238,21 +230,40 @@ class BarOrderScreen: UIViewController {
             } else if orderButton.titleLabel?.text! == "I Agree to The Terms Listed Above" {
                 let newProduct = Product(title: self.productTitle.text!, shortDesc: self.shortDescription, price: self.price, image: self.productImageView.image!, quantityEditable: false, tag: si.requestedBarTag)
                 si.productsInCart.append(newProduct)
+                self.webView.isHidden = true
+                let confirmedAlert = UIAlertController(title: "Success", message: "You've added \(self.productTitle.text!) to your cart. Coninue to your cart to checkout or continue shopping.", preferredStyle: UIAlertControllerStyle.alert)
+                confirmedAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(confirmedAlert, animated: true, completion: nil)
+                self.orderButton.isHidden = true
             }
         // If they're adding a bar to their cart
         } else if si.requestedBarTag < 7 {
-            if canBuyAtThisTime() {
-                let newProduct = Product(title: self.productTitle.text!, shortDesc: self.shortDescription, price: self.price, image: self.productImageView.image!, quantityEditable: false, tag: si.requestedBarTag)
-                si.productsInCart.append(newProduct)
-                self.orderButton.isHidden = true
-            } else {
-                let lastPurchaseTime = (si.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
-                let day = lastPurchaseTime[...lastPurchaseTime.index(of: "y")!]
-                let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once per weekly cycle.", message: "Please wait until \(day) to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
-                cantBuyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(cantBuyAlert, animated: true, completion: nil)
+            var yes = true
+            var barInCartTitle: String!
+            for product in si.productsInCart {
+                if product.productTag < 7 {
+                    yes = false
+                    barInCartTitle = product.title
+                }
             }
-        } else {
+            if yes {
+                if canBuyAtThisTime() {
+                    let newProduct = Product(title: self.productTitle.text!, shortDesc: self.shortDescription, price: self.price, image: self.productImageView.image!, quantityEditable: false, tag: si.requestedBarTag)
+                    si.productsInCart.append(newProduct)
+                } else {
+                    let lastPurchaseTime = (si.lastBarPurchaseTime as! Date).description(with: Locale(identifier: "Day"))
+                    let day = lastPurchaseTime[...lastPurchaseTime.index(of: "y")!]
+                    let cantBuyAlert = UIAlertController(title: "Purchasing of bars is limited to once per weekly cycle.", message: "Please wait until \(day) to purchase again.", preferredStyle: UIAlertControllerStyle.alert)
+                    cantBuyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(cantBuyAlert, animated: true, completion: nil)
+                }
+            } else {
+                let tooManyBarsAlert = UIAlertController(title: "\(barInCartTitle!) is already in your cart", message: "Ordering meal replacement bars is limited to one box per week. Please remove \(barInCartTitle!) from your cart if you wish to change this weeks order.", preferredStyle: UIAlertControllerStyle.alert)
+                tooManyBarsAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(tooManyBarsAlert, animated: true, completion: nil)
+            }
+            
+        } else { // Adding Crumbs or FlavorfulFIX to cart
             let newProduct = Product(title: self.productTitle.text!, shortDesc: self.shortDescription, price: self.price, image: self.productImageView.image!, quantityEditable: true, tag: si.requestedBarTag)
             var incrimentedQuantity: Bool = false
             for product in si.productsInCart {
@@ -265,9 +276,6 @@ class BarOrderScreen: UIViewController {
                 si.productsInCart.append(newProduct)
             }
             
-        }
-        for product in si.productsInCart {
-            print("Title: \(product.title), Price: \(product.price), Quantity: \(product.quantity)")
         }
     }
     func canBuyAtThisTime() -> Bool {
